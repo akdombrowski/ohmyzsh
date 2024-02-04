@@ -157,6 +157,10 @@ alias gbg='LANG=C git branch -vv | grep ": gone\]"'
 alias gco='git checkout'
 alias gcor='git checkout --recurse-submodules'
 alias gcb='git checkout -b'
+<<<<<<< HEAD
+=======
+alias gcB='git checkout -B'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 alias gcd='git checkout $(git_develop_branch)'
 alias gcm='git checkout $(git_main_branch)'
 alias gcp='git cherry-pick'
@@ -193,6 +197,10 @@ alias gca='git commit --verbose --all'
 alias gca!='git commit --verbose --all --amend'
 alias gcan!='git commit --verbose --all --no-edit --amend'
 alias gcans!='git commit --verbose --all --signoff --no-edit --amend'
+<<<<<<< HEAD
+=======
+alias gcann!='git commit --verbose --all --date=now --no-edit --amend'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 alias gc!='git commit --verbose --amend'
 alias gcn!='git commit --verbose --no-edit --amend'
 alias gcf='git config --list'
@@ -333,6 +341,10 @@ alias grbs='git rebase --skip'
 alias grbd='git rebase $(git_develop_branch)'
 alias grbm='git rebase $(git_main_branch)'
 alias grbom='git rebase origin/$(git_main_branch)'
+<<<<<<< HEAD
+=======
+alias grf='git reflog'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 alias gr='git remote'
 alias grv='git remote --verbose'
 alias gra='git remote add'
@@ -352,6 +364,11 @@ alias grss='git restore --source'
 alias grst='git restore --staged'
 alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
 alias grev='git revert'
+<<<<<<< HEAD
+=======
+alias greva='git revert --abort'
+alias grevc='git revert --continue'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 alias grm='git rm'
 alias grmc='git rm --cached'
 alias gcount='git shortlog --summary --numbered'

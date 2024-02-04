@@ -1,5 +1,6 @@
 # bgnotify zsh plugin
 
+<<<<<<< HEAD
 cross-platform background notifications for long running commands! Supports OSX and Ubuntu linux.
 
 Standalone homepage: [t413/zsh-background-notify](https://github.com/t413/zsh-background-notify)
@@ -7,13 +8,27 @@ Standalone homepage: [t413/zsh-background-notify](https://github.com/t413/zsh-ba
 ----------------------------------
 
 ## How to use!
+=======
+cross-platform background notifications for long running commands! Supports OSX and Linux.
+
+Standalone homepage: [t413/zsh-background-notify](https://github.com/t413/zsh-background-notify)
+
+---
+
+## How to use
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 Just add bgnotify to your plugins list in your `.zshrc`
 
 - On OS X you'll need [terminal-notifier](https://github.com/alloy/terminal-notifier)
   * `brew install terminal-notifier` (or `gem install terminal-notifier`)
+<<<<<<< HEAD
 - On ubuntu you're already all set!
 - On windows you can use [notifu](https://www.paralint.com/projects/notifu/) or the Cygwin Ports libnotify package
+=======
+- On Linux, make sure you have `notify-send` or `kdialog` installed. If you're using Ubuntu you should already be all set!
+- On Windows you can use [notifu](https://www.paralint.com/projects/notifu/) or the Cygwin Ports libnotify package
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 
 ## Screenshots
@@ -35,20 +50,47 @@ Just add bgnotify to your plugins list in your `.zshrc`
 
 One can configure a few things:
 
+<<<<<<< HEAD
 - `bgnotify_threshold` sets the notification threshold time (default 6 seconds)
 - `function bgnotify_formatted` lets you change the notification
 
 Use these by adding a function definition before the your call to source. Example:
 
 ~~~ sh
+=======
+- `bgnotify_bell` enabled or disables the terminal bell (default true)
+- `bgnotify_threshold` sets the notification threshold time (default 6 seconds)
+- `function bgnotify_formatted` lets you change the notification. You can for instance customize the message and pass in an icon.
+
+Use these by adding a function definition before the your call to source. Example:
+
+```sh
+bgnotify_bell=false   ## disable terminal bell
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 bgnotify_threshold=4  ## set your own notification threshold
 
 function bgnotify_formatted {
   ## $1=exit_status, $2=command, $3=elapsed_time
+<<<<<<< HEAD
   [ $1 -eq 0 ] && title="Holy Smokes Batman!" || title="Holy Graf Zeppelin!"
   bgnotify "$title -- after $3 s" "$2";
+=======
+
+  # Humanly readable elapsed time
+  local elapsed="$(( $3 % 60 ))s"
+  (( $3 < 60 ))   || elapsed="$((( $3 % 3600) / 60 ))m $elapsed"
+  (( $3 < 3600 )) || elapsed="$((  $3 / 3600 ))h $elapsed"
+
+  [ $1 -eq 0 ] && title="Holy Smokes Batman" || title="Holy Graf Zeppelin"
+  [ $1 -eq 0 ] && icon="$HOME/icons/success.png" || icon="$HOME/icons/fail.png"
+  bgnotify "$title - took ${elapsed}" "$2" "$icon"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 }
 
 plugins=(git bgnotify)  ## add to plugins list
 source $ZSH/oh-my-zsh.sh  ## existing source call
+<<<<<<< HEAD
 ~~~
+=======
+```
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))

@@ -58,6 +58,15 @@
 #
 #     When set to "1" suggest all options, including options which are
 #     typically hidden (e.g. '--allow-empty' for 'git commit').
+<<<<<<< HEAD
+=======
+#
+#   GIT_COMPLETION_IGNORE_CASE
+#
+#     When set, uses for-each-ref '--ignore-case' to find refs that match
+#     case insensitively, even on systems with case sensitive file systems
+#     (e.g., completing tag name "FOO" on "git checkout f<TAB>").
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 # The following functions are meant to modify COMPREPLY, which should not be
 # modified directly.  The purpose is to localize the modifications so it's
@@ -320,6 +329,7 @@ else
 	unset $(compgen -v __gitcomp_builtin_)
 fi
 
+<<<<<<< HEAD
 __gitcomp_builtin_add_default=" --dry-run --verbose --interactive --patch --edit --force --update --renormalize --intent-to-add --all --ignore-removal --refresh --ignore-errors --ignore-missing --sparse --chmod= --pathspec-from-file= --pathspec-file-nul --no-dry-run -- --no-verbose --no-interactive --no-patch --no-edit --no-force --no-update --no-renormalize --no-intent-to-add --no-all --no-ignore-removal --no-refresh --no-ignore-errors --no-ignore-missing --no-sparse --no-chmod --no-pathspec-from-file --no-pathspec-file-nul"
 __gitcomp_builtin_am_default=" --interactive --3way --quiet --signoff --utf8 --keep --keep-non-patch --message-id --keep-cr --no-keep-cr --scissors --quoted-cr= --whitespace= --ignore-space-change --ignore-whitespace --directory= --exclude= --include= --patch-format= --reject --resolvemsg= --continue --resolved --skip --abort --quit --show-current-patch --allow-empty --committer-date-is-author-date --ignore-date --rerere-autoupdate --gpg-sign --empty= -- --no-interactive --no-3way --no-quiet --no-signoff --no-utf8 --no-keep --no-keep-non-patch --no-message-id --no-scissors --no-whitespace --no-ignore-space-change --no-ignore-whitespace --no-directory --no-exclude --no-include --no-patch-format --no-reject --no-resolvemsg --no-committer-date-is-author-date --no-ignore-date --no-rerere-autoupdate --no-gpg-sign"
 __gitcomp_builtin_apply_default=" --exclude= --include= --no-add --stat --numstat --summary --check --index --intent-to-add --cached --apply --3way --build-fake-ancestor= --whitespace= --ignore-space-change --ignore-whitespace --reverse --unidiff-zero --reject --allow-overlap --verbose --quiet --inaccurate-eof --recount --directory= --allow-empty --add -- --no-stat --no-numstat --no-summary --no-check --no-index --no-intent-to-add --no-cached --no-apply --no-3way --no-build-fake-ancestor --no-whitespace --no-ignore-space-change --no-ignore-whitespace --no-reverse --no-unidiff-zero --no-reject --no-allow-overlap --no-verbose --no-quiet --no-inaccurate-eof --no-recount --no-directory --no-allow-empty"
@@ -430,6 +440,8 @@ __gitcomp_builtin_get_default ()
 	eval "test -n \"\$${1}_default\" && echo \"\$${1}_default\""
 }
 
+=======
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 # This function is equivalent to
 #
 #    __gitcomp_opts "$(git xxx --git-completion-helper) ..."
@@ -457,11 +469,17 @@ __gitcomp_builtin ()
 		else
 			completion_helper="--git-completion-helper"
 		fi
+<<<<<<< HEAD
 		completion="$(__git ${cmd/_/ } $completion_helper ||
 			__gitcomp_builtin_get_default $var)" || return
 		# leading and trailing spaces are significant to make
 		# option removal work correctly.
 		options=" $incl $completion "
+=======
+		# leading and trailing spaces are significant to make
+		# option removal work correctly.
+		options=" $incl $(__git ${cmd/_/ } $completion_helper) " || return
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 		for i in $excl; do
 			options="${options/ $i / }"
@@ -604,6 +622,10 @@ __git_heads ()
 	local pfx="${1-}" cur_="${2-}" sfx="${3-}"
 
 	__git for-each-ref --format="${pfx//\%/%%}%(refname:strip=2)$sfx" \
+<<<<<<< HEAD
+=======
+			${GIT_COMPLETION_IGNORE_CASE+--ignore-case} \
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 			"refs/heads/$cur_*" "refs/heads/$cur_*/**"
 }
 
@@ -617,6 +639,10 @@ __git_remote_heads ()
 	local pfx="${1-}" cur_="${2-}" sfx="${3-}"
 
 	__git for-each-ref --format="${pfx//\%/%%}%(refname:strip=2)$sfx" \
+<<<<<<< HEAD
+=======
+			${GIT_COMPLETION_IGNORE_CASE+--ignore-case} \
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 			"refs/remotes/$cur_*" "refs/remotes/$cur_*/**"
 }
 
@@ -627,6 +653,10 @@ __git_tags ()
 	local pfx="${1-}" cur_="${2-}" sfx="${3-}"
 
 	__git for-each-ref --format="${pfx//\%/%%}%(refname:strip=2)$sfx" \
+<<<<<<< HEAD
+=======
+			${GIT_COMPLETION_IGNORE_CASE+--ignore-case} \
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 			"refs/tags/$cur_*" "refs/tags/$cur_*/**"
 }
 
@@ -646,6 +676,10 @@ __git_dwim_remote_heads ()
 	# but only output if the branch name is unique
 	__git for-each-ref --format="$fer_pfx%(refname:strip=3)$sfx" \
 		--sort="refname:strip=3" \
+<<<<<<< HEAD
+=======
+		${GIT_COMPLETION_IGNORE_CASE+--ignore-case} \
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 		"refs/remotes/*/$cur_*" "refs/remotes/*/$cur_*/**" | \
 	uniq -u
 }
@@ -670,6 +704,10 @@ __git_refs ()
 	local format refs
 	local pfx="${3-}" cur_="${4-$cur}" sfx="${5-}"
 	local match="${4-}"
+<<<<<<< HEAD
+=======
+	local umatch="${4-}"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 	local fer_pfx="${pfx//\%/%%}" # "escape" for-each-ref format specifiers
 
 	__git_find_repo_path
@@ -693,12 +731,25 @@ __git_refs ()
 		fi
 	fi
 
+<<<<<<< HEAD
+=======
+	if test "${GIT_COMPLETION_IGNORE_CASE:+1}" = "1"
+	then
+		# uppercase with tr instead of ${match,^^} for bash 3.2 compatibility
+		umatch=$(echo "$match" | tr a-z A-Z 2>/dev/null || echo "$match")
+	fi
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 	if [ "$list_refs_from" = path ]; then
 		if [[ "$cur_" == ^* ]]; then
 			pfx="$pfx^"
 			fer_pfx="$fer_pfx^"
 			cur_=${cur_#^}
 			match=${match#^}
+<<<<<<< HEAD
+=======
+			umatch=${umatch#^}
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 		fi
 		case "$cur_" in
 		refs|refs/*)
@@ -709,7 +760,11 @@ __git_refs ()
 		*)
 			for i in HEAD FETCH_HEAD ORIG_HEAD MERGE_HEAD REBASE_HEAD CHERRY_PICK_HEAD; do
 				case "$i" in
+<<<<<<< HEAD
 				$match*)
+=======
+				$match*|$umatch*)
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 					if [ -e "$dir/$i" ]; then
 						echo "$pfx$i$sfx"
 					fi
@@ -723,6 +778,10 @@ __git_refs ()
 			;;
 		esac
 		__git_dir="$dir" __git for-each-ref --format="$fer_pfx%($format)$sfx" \
+<<<<<<< HEAD
+=======
+			${GIT_COMPLETION_IGNORE_CASE+--ignore-case} \
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 			"${refs[@]}"
 		if [ -n "$track" ]; then
 			__git_dwim_remote_heads "$pfx" "$match" "$sfx"
@@ -742,15 +801,26 @@ __git_refs ()
 	*)
 		if [ "$list_refs_from" = remote ]; then
 			case "HEAD" in
+<<<<<<< HEAD
 			$match*)	echo "${pfx}HEAD$sfx" ;;
 			esac
 			__git for-each-ref --format="$fer_pfx%(refname:strip=3)$sfx" \
+=======
+			$match*|$umatch*)	echo "${pfx}HEAD$sfx" ;;
+			esac
+			__git for-each-ref --format="$fer_pfx%(refname:strip=3)$sfx" \
+				${GIT_COMPLETION_IGNORE_CASE+--ignore-case} \
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 				"refs/remotes/$remote/$match*" \
 				"refs/remotes/$remote/$match*/**"
 		else
 			local query_symref
 			case "HEAD" in
+<<<<<<< HEAD
 			$match*)	query_symref="HEAD" ;;
+=======
+			$match*|$umatch*)	query_symref="HEAD" ;;
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 			esac
 			__git ls-remote "$remote" $query_symref \
 				"refs/tags/$match*" "refs/heads/$match*" \
@@ -888,7 +958,10 @@ __git_list_merge_strategies ()
 	}'
 }
 
+<<<<<<< HEAD
 __git_merge_strategies_default='octopus ours recursive resolve subtree'
+=======
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 __git_merge_strategies=
 # 'git merge -s help' (and thus detection of the merge strategy
 # list) fails, unfortunately, if run outside of any git working
@@ -898,8 +971,12 @@ __git_merge_strategies=
 __git_compute_merge_strategies ()
 {
 	test -n "$__git_merge_strategies" ||
+<<<<<<< HEAD
 	{ __git_merge_strategies=$(__git_list_merge_strategies);
 		__git_merge_strategies="${__git_merge_strategies:-__git_merge_strategies_default}"; }
+=======
+	__git_merge_strategies=$(__git_list_merge_strategies)
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 }
 
 __git_merge_strategy_options="ours theirs subtree subtree= patience
@@ -2281,7 +2358,11 @@ _git_reflog ()
 	fi
 }
 
+<<<<<<< HEAD
 __git_send_email_options="--no-cc-cover --cc= --no-bcc --force --relogin-delay= --to= --suppress-cc= --no-annotate --no-chain-reply-to --sendmail-cmd= --no-identity --transfer-encoding= --validate --no-smtp-auth --confirm= --no-format-patch --reply-to= --smtp-pass= --smtp-server= --annotate --envelope-sender= --no-validate --dry-run --no-thread --smtp-debug= --no-to --thread --no-xmailer --identity= --no-signed-off-cc --no-signed-off-by-cc --smtp-domain= --to-cover --8bit-encoding= --bcc= --smtp-ssl-cert-path= --smtp-user= --cc-cmd= --to-cmd= --no-cc --smtp-server-option= --in-reply-to= --subject= --batch-size= --smtp-auth= --compose --smtp-server-port= --xmailer --no-to-cover --chain-reply-to --smtp-encryption= --dump-aliases --quiet --smtp-ssl --signed-off-cc --signed-off-by-cc --suppress-from --compose-encoding= --no-suppress-from --sender= --from= --format-patch --cc-cover --numbered --no-numbered --signoff --stdout --cover-letter --numbered-files --suffix= --start-number= --reroll-count= --filename-max-length= --rfc --cover-from-description= --subject-prefix= --output-directory= --keep-subject --no-binary --zero-commit --ignore-if-in-upstream --no-stat --add-header= --from --attach --inline --signature= --base= --signature-file= --progress --interdiff= --range-diff= --creation-factor= --binary -- --no-signoff --no-stdout --no-cover-letter --no-numbered-files --no-suffix --no-start-number --no-reroll-count --no-filename-max-length --no-cover-from-description --no-zero-commit --no-ignore-if-in-upstream --no-add-header --no-from --no-in-reply-to --no-attach --no-signature --no-base --no-signature-file --no-quiet --no-progress --no-interdiff --no-range-diff --no-creation-factor"
+=======
+__gitcomp_builtin_send_email_default="--8bit-encoding= --add-header= --annotate --attach --base= --batch-size= --bcc= --binary --cc-cmd= --cc-cover --cc= --chain-reply-to --compose --compose-encoding= --confirm= --cover-from-description= --cover-letter --creation-factor= --dry-run --dump-aliases --envelope-sender= --filename-max-length= --force --force-in-body-from --format-patch --from --from= --identity= --ignore-if-in-upstream --in-reply-to= --inline --interdiff= --keep-subject --numbered --numbered-files --output-directory= --progress --quiet --range-diff= --relogin-delay= --reply-to= --reroll-count= --rfc --sender= --sendmail-cmd= --signature-file= --signature= --signed-off-by-cc --signed-off-cc --signoff --smtp-auth= --smtp-debug= --smtp-domain= --smtp-encryption= --smtp-pass= --smtp-server-option= --smtp-server-port= --smtp-server= --smtp-ssl --smtp-ssl-cert-path= --smtp-user= --start-number= --stdout --subject-prefix= --subject= --suffix= --suppress-cc= --suppress-from --thread --to-cmd= --to-cover --to= --transfer-encoding= --v= --validate --xmailer --zero-commit -- --no-add-header --no-annotate --no-attach --no-base --no-bcc --no-binary --no-cc --no-cc-cover --no-chain-reply-to --no-cover-from-description --no-cover-letter --no-creation-factor --no-filename-max-length --no-force-in-body-from --no-format-patch --no-from --no-identity --no-ignore-if-in-upstream --no-in-reply-to --no-interdiff --no-numbered --no-numbered-files --no-progress --no-quiet --no-range-diff --no-reroll-count --no-signature --no-signature-file --no-signed-off-by-cc --no-signed-off-cc --no-signoff --no-smtp-auth --no-start-number --no-stat --no-stdout --no-suffix --no-suppress-from --no-thread --no-to --no-to-cover --no-validate --no-xmailer --no-zero-commit"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 __git_send_email_confirm_options="always never auto cc compose"
 __git_send_email_suppresscc_options="author self cc bodycc sob cccmd body all"
 
@@ -2321,7 +2402,15 @@ _git_send_email ()
 		return
 		;;
 	--*)
+<<<<<<< HEAD
 		__gitcomp_builtin send-email "$__git_send_email_options $__git_format_patch_extra_options"
+=======
+		# Older versions of git send-email don't have all the options
+		git send-email --git-completion-helper | grep -q annotate ||
+		__gitcomp_builtin_send_email=$__gitcomp_builtin_send_email_default
+
+		__gitcomp_builtin send-email "$__git_format_patch_extra_options"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 		return
 		;;
 	esac
@@ -2456,7 +2545,29 @@ __git_config_vars=
 __git_compute_config_vars ()
 {
 	test -n "$__git_config_vars" ||
+<<<<<<< HEAD
 	__git_config_vars="$(git help --config-for-completion | sort -u)"
+=======
+	__git_config_vars="$(git help --config-for-completion)"
+}
+
+__git_compute_config_sections_old ()
+{
+	__git_compute_config_vars
+	echo "$__git_config_vars" |
+		awk -F . '{ dict[$1] = 1 } END { for (e in dict) print e }'
+}
+
+__git_config_sections=
+__git_compute_config_sections ()
+{
+	test -n "$__git_config_sections" ||
+	__git_config_sections="$(
+		git help --config-sections-for-completion > /dev/null 2>&1 &&
+		git help --config-sections-for-completion ||
+		__git_compute_config_sections_old
+	)"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 }
 
 # Completes possible values of various configuration variables.
@@ -2670,6 +2781,7 @@ __git_complete_config_variable_name ()
 		__gitcomp "$__git_config_vars" "" "$cur_" "$sfx"
 		;;
 	*)
+<<<<<<< HEAD
 		__git_compute_config_vars
 		__gitcomp_nl "$(echo "$__git_config_vars" |
 				awk -F . '{
@@ -2680,6 +2792,10 @@ __git_complete_config_variable_name ()
 						print s "."
 				}
 				')" "" "$cur_" ""
+=======
+		__git_compute_config_sections
+		__gitcomp_nl "$__git_config_sections" "" "$cur_" "."
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 		;;
 	esac
 }
@@ -3628,6 +3744,7 @@ __git_complete ()
 	___git_complete $1 $func
 }
 
+<<<<<<< HEAD
 if ! git --list-cmds=main >/dev/null 2>&1; then
 
 	declare -A __git_cmds
@@ -3665,6 +3782,8 @@ if ! git --list-cmds=main >/dev/null 2>&1; then
 
 fi
 
+=======
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 ___git_complete git __git_main
 ___git_complete gitk __gitk_main
 

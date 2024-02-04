@@ -88,4 +88,8 @@ if [[ ! $DISABLE_VENV_CD -eq 1 ]]; then
   # http://zsh.sourceforge.net/Doc/Release/Functions.html
   autoload -U add-zsh-hook
   add-zsh-hook chpwd workon_cwd
+<<<<<<< HEAD
+=======
+  [[ $PWD != ~ ]] && workon_cwd
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 fi

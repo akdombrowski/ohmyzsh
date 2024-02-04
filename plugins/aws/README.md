@@ -16,6 +16,11 @@ plugins=(... aws)
   It also sets `$AWS_EB_PROFILE` to `<profile>` for the Elastic Beanstalk CLI. It sets `$AWS_PROFILE_REGION` for display in `aws_prompt_info`.
   Run `asp` without arguments to clear the profile.
 * `asp [<profile>] login`: If AWS SSO has been configured in your aws profile, it will run the `aws sso login` command following profile selection.
+<<<<<<< HEAD
+=======
+* `asp [<profile>] login [<sso_session>]`: In addition to `asp [<profile>] login`, if SSO session has been configured in your aws profile, it will run the `aws sso login --sso-session <sso_session>` command following profile selection.
+* `asp [<profile>] logout`: If AWS SSO has been configured in your aws profile, it will run the `aws sso logout` command following profile selection.
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 * `asr [<region>]`: sets `$AWS_REGION` and `$AWS_DEFAULT_REGION` (legacy) to `<region>`.
   Run `asr` without arguments to clear the profile.
@@ -45,6 +50,14 @@ plugins=(... aws)
   Some themes might overwrite the value of RPROMPT instead of appending to it, so they'll need to be fixed to
   see the AWS profile/region prompt.
 
+<<<<<<< HEAD
+=======
+* Set `AWS_PROFILE_STATE_ENABLED=true` in your zshrc file if you want the aws profile to persist between shell sessions.
+  This option might slow down your shell startup time.
+  By default the state file path is `/tmp/.aws_current_profile`. This means that the state won't survive a reboot or otherwise GC.
+  You can control the state file path using the `AWS_STATE_FILE` environment variable.
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 ## Theme
 
 The plugin creates an `aws_prompt_info` function that you can use in your theme, which displays

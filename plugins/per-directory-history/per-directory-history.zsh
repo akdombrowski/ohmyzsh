@@ -59,6 +59,10 @@
 [[ -z $HISTORY_BASE ]] && HISTORY_BASE="$HOME/.directory_history"
 [[ -z $HISTORY_START_WITH_GLOBAL ]] && HISTORY_START_WITH_GLOBAL=false
 [[ -z $PER_DIRECTORY_HISTORY_TOGGLE ]] && PER_DIRECTORY_HISTORY_TOGGLE='^G'
+<<<<<<< HEAD
+=======
+[[ -z $PER_DIRECTORY_HISTORY_PRINT_MODE_CHANGE ]] && PER_DIRECTORY_HISTORY_PRINT_MODE_CHANGE=true
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 #-------------------------------------------------------------------------------
 # toggle global/directory history used for searching - ctrl-G by default
@@ -68,6 +72,7 @@ function per-directory-history-toggle-history() {
   if [[ $_per_directory_history_is_global == true ]]; then
     _per-directory-history-set-directory-history
     _per_directory_history_is_global=false
+<<<<<<< HEAD
     print -n "\nusing local history"
   else
     _per-directory-history-set-global-history
@@ -76,6 +81,18 @@ function per-directory-history-toggle-history() {
   fi
   zle .push-line
   zle .accept-line
+=======
+    if [[ $PER_DIRECTORY_HISTORY_PRINT_MODE_CHANGE == true ]]; then
+      zle -M "using local history"
+    fi
+  else
+    _per-directory-history-set-global-history
+    _per_directory_history_is_global=true
+    if [[ $PER_DIRECTORY_HISTORY_PRINT_MODE_CHANGE == true ]]; then
+      zle -M "using global history"
+    fi
+  fi
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 }
 
 autoload per-directory-history-toggle-history

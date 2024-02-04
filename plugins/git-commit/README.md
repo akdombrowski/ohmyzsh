@@ -29,8 +29,14 @@ Where `type` is one of the following:
 - `rev`
 - `style`
 - `test`
+<<<<<<< HEAD
 
 > NOTE: the alias for `revert` type is `rev`, as otherwise it conflicts with the git command of the same name.  
+=======
+- `wip`
+
+> NOTE: the alias for `revert` type is `rev`, as otherwise it conflicts with the git command of the same name.
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 > It will still generate a commit message in the format `revert: <message>`
 
 ## Examples
@@ -38,5 +44,9 @@ Where `type` is one of the following:
 | Git alias                                     | Command                                              |
 | --------------------------------------------- | ---------------------------------------------------- |
 | `git style "remove trailing whitespace"`      | `git commit -m "style: remove trailing whitespace"`  |
+<<<<<<< HEAD
+=======
+| `git wip "work in progress"`                  | `git commit -m "work in progress"`                   |
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 | `git fix -s "router" "correct redirect link"` | `git commit -m "fix(router): correct redirect link"` |
 | `git rev -s "api" "rollback v2"`              | `git commit -m "revert(api): rollback v2"`           |

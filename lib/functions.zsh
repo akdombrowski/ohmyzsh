@@ -182,6 +182,11 @@ function omz_urlencode() {
   fi
 
   # Use LC_CTYPE=C to process text byte-by-byte
+<<<<<<< HEAD
+=======
+  # Note that this doesn't work in Termux, as it only has UTF-8 locale.
+  # Characters will be processed as UTF-8, which is fine for URLs.
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   local i byte ord LC_ALL=C
   export LC_ALL
   local reserved=';/?:@&=+$,'
@@ -206,6 +211,12 @@ function omz_urlencode() {
     else
       if [[ "$byte" == " " && -n $spaces_as_plus ]]; then
         url_str+="+"
+<<<<<<< HEAD
+=======
+      elif [[ "$PREFIX" = *com.termux* ]]; then
+        # Termux does not have non-UTF8 locales, so just send the UTF-8 character directly
+        url_str+="$byte"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
       else
         ord=$(( [##16] #byte ))
         url_str+="%$ord"

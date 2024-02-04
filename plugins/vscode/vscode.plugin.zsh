@@ -3,6 +3,10 @@
 #   https://github.com/MarsiBarsi (original author)
 #   https://github.com/babakks
 #   https://github.com/SteelShot
+<<<<<<< HEAD
+=======
+#   https://github.com/AliSajid
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 # Verify if any manual user choice of VS Code exists first.
 if [[ -n "$VSCODE" ]] && ! which $VSCODE &>/dev/null; then
@@ -38,6 +42,10 @@ alias vscn="$VSCODE --new-window"
 alias vscr="$VSCODE --reuse-window"
 alias vscw="$VSCODE --wait"
 alias vscu="$VSCODE --user-data-dir"
+<<<<<<< HEAD
+=======
+alias vscp="$VSCODE --profile"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 alias vsced="$VSCODE --extensions-dir"
 alias vscie="$VSCODE --install-extension"

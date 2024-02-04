@@ -11,6 +11,10 @@ _git_commit_aliases=(
   'revert'
   'style'
   'test'
+<<<<<<< HEAD
+=======
+  'wip'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 )
 
 local alias type

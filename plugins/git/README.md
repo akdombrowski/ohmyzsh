@@ -51,6 +51,10 @@ plugins=(... git)
 | `gco`                  | `git checkout`                                                                                                                  |
 | `gcor`                 | `git checkout --recurse-submodules`                                                                                             |
 | `gcb`                  | `git checkout -b`                                                                                                               |
+<<<<<<< HEAD
+=======
+| `gcB`                  | `git checkout -B`                                                                                                               |
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 | `gcd`                  | `git checkout $(git_develop_branch)`                                                                                            |
 | `gcm`                  | `git checkout $(git_main_branch)`                                                                                               |
 | `gcp`                  | `git cherry-pick`                                                                                                               |
@@ -69,6 +73,10 @@ plugins=(... git)
 | `gca!`                 | `git commit --verbose --all --amend`                                                                                            |
 | `gcan!`                | `git commit --verbose --all --no-edit --amend`                                                                                  |
 | `gcans!`               | `git commit --verbose --all --signoff --no-edit --amend`                                                                        |
+<<<<<<< HEAD
+=======
+| `gcann!`               | `git commit --verbose --all --date=now --no-edit --amend`                                                                       |
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 | `gc!`                  | `git commit --verbose --amend`                                                                                                  |
 | `gcn!`                 | `git commit --verbose --no-edit --amend`                                                                                        |
 | `gcs`                  | `git commit -S`                                                                                                                 |
@@ -150,6 +158,10 @@ plugins=(... git)
 | `grbd`                 | `git rebase $(git_develop_branch)`                                                                                              |
 | `grbm`                 | `git rebase $(git_main_branch)`                                                                                                 |
 | `grbom`                | `git rebase origin/$(git_main_branch)`                                                                                          |
+<<<<<<< HEAD
+=======
+| `grf`                  | `git reflog`                                                                                                                    |
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 | `gr`                   | `git remote`                                                                                                                    |
 | `grv`                  | `git remote --verbose`                                                                                                          |
 | `gra`                  | `git remote add`                                                                                                                |
@@ -162,7 +174,11 @@ plugins=(... git)
 | `grhh`                 | `git reset --hard`                                                                                                              |
 | `grhk`                 | `git reset --keep`                                                                                                              |
 | `grhs`                 | `git reset --soft`                                                                                                              |
+<<<<<<< HEAD
 | `gpristine`            | `git reset --hard && git clean -dffx`                                                                                           |
+=======
+| `gpristine`            | `git reset --hard && git clean --force -dfx`                                                                                    |
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 | `groh`                 | `git reset origin/$(git_current_branch) --hard`                                                                                 |
 | `grs`                  | `git restore`                                                                                                                   |
 | `grss`                 | `git restore --source`                                                                                                          |

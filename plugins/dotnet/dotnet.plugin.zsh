@@ -1,4 +1,5 @@
 # This scripts is copied from (MIT License):
+<<<<<<< HEAD
 # https://github.com/dotnet/toolset/blob/master/scripts/register-completions.zsh
 
 _dotnet_zsh_complete() 
@@ -17,6 +18,18 @@ _dotnet_zsh_complete()
 }
 
 compdef _dotnet_zsh_complete dotnet
+=======
+# https://raw.githubusercontent.com/dotnet/sdk/main/scripts/register-completions.zsh
+
+#compdef dotnet
+_dotnet_completion() {
+  local -a completions=("${(@f)$(dotnet complete "${words}")}")
+  compadd -a completions
+  _files
+}
+
+compdef _dotnet_completion dotnet
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 # Aliases bellow are here for backwards compatibility
 # added by Shaun Tabone (https://github.com/xontab) 

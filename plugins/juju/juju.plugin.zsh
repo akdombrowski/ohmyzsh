@@ -98,7 +98,11 @@ jaddr() {
   elif [[ $# -eq 2 ]]; then
     # Get unit address
     juju status "$1/$2" --format=json \
+<<<<<<< HEAD
       | jq -r ".applications.\"$1\".units.\"$1/$2\".address"
+=======
+      | jq -r ".applications.\"$1\".units.\"$1/$2\" | .address // .\"public-address\""
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   else
     echo "Invalid number of arguments."
     echo "Usage:   jaddr <app-name> [<unit-number>]"

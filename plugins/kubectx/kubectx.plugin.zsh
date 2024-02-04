@@ -9,5 +9,9 @@ function kubectx_prompt_info() {
 
   # use value in associative array if it exists
   # otherwise fall back to the context name
+<<<<<<< HEAD
   echo "${kubectx_mapping[$current_ctx]:-${current_ctx:gs/%/%%}}"
+=======
+  echo "${kubectx_mapping[\"$current_ctx\"]:-${current_ctx:gs/%/%%}}"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 }

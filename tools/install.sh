@@ -63,7 +63,13 @@ zdot="${ZDOTDIR:-$HOME}"
 # Default value for $ZSH
 # a) if $ZDOTDIR is supplied and not $HOME: $ZDOTDIR/ohmyzsh
 # b) otherwise, $HOME/.oh-my-zsh
+<<<<<<< HEAD
 [ "$ZDOTDIR" = "$HOME" ] || ZSH="${ZSH:-${ZDOTDIR:+$ZDOTDIR/ohmyzsh}}"
+=======
+if [ -n "$ZDOTDIR" ] && [ "$ZDOTDIR" != "$HOME" ]; then
+  ZSH="${ZSH:-$ZDOTDIR/ohmyzsh}"
+fi
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 ZSH="${ZSH:-$HOME/.oh-my-zsh}"
 
 # Default settings

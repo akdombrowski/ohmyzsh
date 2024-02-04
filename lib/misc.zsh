@@ -19,8 +19,18 @@ setopt multios              # enable redirect to multiple streams: echo >file1 >
 setopt long_list_jobs       # show long list format job notifications
 setopt interactivecomments  # recognize comments
 
+<<<<<<< HEAD
 env_default 'PAGER' 'less'
 env_default 'LESS' '-R'
+=======
+# define pager dependant on what is available (less or more)
+if (( ${+commands[less]} )); then
+  env_default 'PAGER' 'less'
+  env_default 'LESS' '-R'
+elif (( ${+commands[more]} )); then
+  env_default 'PAGER' 'more'
+fi
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 ## super user alias
 alias _='sudo '

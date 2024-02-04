@@ -12,7 +12,11 @@ plugins=(... python)
 
 | Command          | Description                                                                            |
 | ---------------- | -------------------------------------------------------------------------------------- |
+<<<<<<< HEAD
 | `py`             | Runs `python3`                                                                         |
+=======
+| `py`             | Runs `python3`. Only set if `py` is not installed.                                     |
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 | `ipython`        | Runs the appropriate `ipython` version according to the activated virtualenv           |
 | `pyfind`         | Finds .py files recursively in the current directory                                   |
 | `pyclean [dirs]` | Deletes byte-code and cache files from a list of directories or the current one        |

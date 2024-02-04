@@ -14,5 +14,9 @@ fi
 
 alias h='helm'
 alias hin='helm install'
+<<<<<<< HEAD
+=======
+alias hun='helm uninstall'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 alias hse='helm search'
 alias hup='helm upgrade'

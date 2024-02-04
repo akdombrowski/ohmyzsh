@@ -45,6 +45,10 @@ Available search contexts are:
 | `scholar`             | `https://scholar.google.com/scholar?q=`         |
 | `ask`                 | `https://www.ask.com/web?q=`                    |
 | `youtube`             | `https://www.youtube.com/results?search_query=` |
+<<<<<<< HEAD
+=======
+| `deepl`               | `https://www.deepl.com/translator#auto/auto/`   |
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 Also there are aliases for bang-searching DuckDuckGo:
 

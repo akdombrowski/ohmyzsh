@@ -5,6 +5,10 @@ files=(
   /etc/grc.zsh               # default
   /usr/local/etc/grc.zsh     # homebrew darwin-x64
   /opt/homebrew/etc/grc.zsh  # homebrew darwin-arm64
+<<<<<<< HEAD
+=======
+  /usr/share/grc/grc.zsh     # Gentoo Linux (app-misc/grc)
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 )
 
 # verify the file is readable and source it

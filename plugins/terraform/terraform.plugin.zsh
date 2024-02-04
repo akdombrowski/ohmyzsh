@@ -24,3 +24,8 @@ alias tfi='terraform init'
 alias tfo='terraform output'
 alias tfp='terraform plan'
 alias tfv='terraform validate'
+<<<<<<< HEAD
+=======
+alias tfs='terraform state'
+alias tfsh='terraform show'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))

@@ -224,6 +224,11 @@ function quick-look() {
 }
 
 function man-preview() {
+<<<<<<< HEAD
+=======
+  [[ $# -eq 0 ]] && >&2 echo "Usage: $0 command1 [command2 ...]" && return 1
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   local page
   for page in "${(@f)"$(man -w $@)"}"; do
     command mandoc -Tpdf $page | open -f -a Preview

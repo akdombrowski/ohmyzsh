@@ -17,6 +17,10 @@ permissions:
 jobs:
   test:
     name: Test installer
+<<<<<<< HEAD
+=======
+    if: github.repository == 'ohmyzsh/ohmyzsh'
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -48,7 +52,15 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+<<<<<<< HEAD
         run: |
           cp tools/install.sh .github/workflows/installer/install.sh
           cd .github/workflows/installer
           vc deploy --prod -t ${{ secrets.VERCEL_TOKEN }}
+=======
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          cp tools/install.sh .github/workflows/installer/install.sh
+          cd .github/workflows/installer
+          vc deploy --prod -t "$VERCEL_TOKEN"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))

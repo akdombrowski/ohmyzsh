@@ -147,6 +147,7 @@ function wrap_clipboard_widgets() {
   done
 }
 
+<<<<<<< HEAD
 wrap_clipboard_widgets copy \
     vi-yank vi-yank-eol vi-yank-whole-line \
     vi-change vi-change-eol vi-change-whole-line \
@@ -158,6 +159,21 @@ wrap_clipboard_widgets paste \
     put-replace-selection
 
 unfunction wrap_clipboard_widgets
+=======
+if [[ -z "${VI_MODE_DISABLE_CLIPBOARD:-}" ]]; then
+  wrap_clipboard_widgets copy \
+      vi-yank vi-yank-eol vi-yank-whole-line \
+      vi-change vi-change-eol vi-change-whole-line \
+      vi-kill-line vi-kill-eol vi-backward-kill-word \
+      vi-delete vi-delete-char vi-backward-delete-char
+
+  wrap_clipboard_widgets paste \
+      vi-put-{before,after} \
+      put-replace-selection
+
+  unfunction wrap_clipboard_widgets
+fi
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 # if mode indicator wasn't setup by theme, define default, we'll leave INSERT_MODE_INDICATOR empty by default
 if [[ -z "$MODE_INDICATOR" ]]; then

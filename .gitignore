@@ -1,5 +1,9 @@
 # custom files
+<<<<<<< HEAD
 # custom/
+=======
+custom/
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 # temp files directories
 cache/

@@ -88,6 +88,17 @@ Oh My Zsh is installed by running one of the following commands in your terminal
 | **wget**  | `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`   |
 | **fetch** | `sh -c "$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` |
 
+<<<<<<< HEAD
+=======
+Alternatively, the installer is also mirrored outside GitHub. Using this URL instead may be required if you're in a country like India or China, that blocks `raw.githubusercontent.com`:
+
+| Method    | Command                                                                                           |
+| :-------- | :------------------------------------------------------------------------------------------------ |
+| **curl**  | `sh -c "$(curl -fsSL https://install.ohmyz.sh/)"`                                                 |
+| **wget**  | `sh -c "$(wget -O- https://install.ohmyz.sh/)"`                                                   |
+| **fetch** | `sh -c "$(fetch -o - https://install.ohmyz.sh/)"`                                                 |
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 _Note that any previous `.zshrc` will be renamed to `.zshrc.pre-oh-my-zsh`. After installation, you can move the configuration you want to preserve into the new `.zshrc`._
 
 #### Manual Inspection
@@ -101,6 +112,11 @@ wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 sh install.sh
 ```
 
+<<<<<<< HEAD
+=======
+If the above URL times out or otherwise fails, you may have to substitute the URL for `https://install.ohmyz.sh` to be able to get the script.
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 ## Using Oh My Zsh
 
 ### Plugins
@@ -220,6 +236,11 @@ the default shell, and it also won't run `zsh` when the installation has finishe
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 ```
 
+<<<<<<< HEAD
+=======
+If you're in China, India, or another country that blocks `raw.githubusercontent.com`, you may have to substitute the URL for `https://install.ohmyz.sh` for it to install.
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 #### Installing From A Forked Repository
 
 The install script also accepts these variables to allow installation of a different repository:

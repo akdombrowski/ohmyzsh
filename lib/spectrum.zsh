@@ -7,6 +7,10 @@ typeset -AHg FX FG BG
 FX=(
   reset     "%{[00m%}"
   bold      "%{[01m%}" no-bold      "%{[22m%}"
+<<<<<<< HEAD
+=======
+  dim       "%{[02m%}" no-dim       "%{[22m%}"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   italic    "%{[03m%}" no-italic    "%{[23m%}"
   underline "%{[04m%}" no-underline "%{[24m%}"
   blink     "%{[05m%}" no-blink     "%{[25m%}"

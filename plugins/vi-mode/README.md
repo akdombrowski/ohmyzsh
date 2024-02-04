@@ -37,6 +37,11 @@ plugins=(... vi-mode)
 - `INSERT_MODE_INDICATOR`: controls the string displayed when the shell is in insert mode.
   See [Mode indicators](#mode-indicators) for details.
 
+<<<<<<< HEAD
+=======
+- `VI_MODE_DISABLE_CLIPBOARD`: If set, disables clipboard integration on yank/paste
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 ## Mode indicators
 
 *Normal mode* is indicated with a red `<<<` mark at the right prompt, when it

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # rtx needs to be in $PATH
 if (( ! ${+commands[rtx]} )); then
   return
@@ -16,3 +17,7 @@ fi
 
 # Generate and load rtx completion
 rtx completion zsh >! "$ZSH_CACHE_DIR/completions/_rtx" &|
+=======
+# TODO: 2024-01-03 remove rtx support
+echo "[oh-my-zsh] 'rtx' plugin has been renamed to 'mise'"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))

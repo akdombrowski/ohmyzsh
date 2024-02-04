@@ -1,5 +1,6 @@
 declare -a autojump_paths
 autojump_paths=(
+<<<<<<< HEAD
   $HOME/.autojump/etc/profile.d/autojump.zsh             # manual installation
   $HOME/.autojump/share/autojump/autojump.zsh            # manual installation
   $HOME/.nix-profile/etc/profile.d/autojump.sh           # NixOS installation
@@ -13,6 +14,22 @@ autojump_paths=(
   /usr/local/etc/profile.d/autojump.sh                   # macOS with Homebrew (default)
   /opt/homebrew/etc/profile.d/autojump.sh                # macOS with Homebrew (default on M1 macs)
   /etc/profiles/per-user/$USER/etc/profile.d/autojump.sh # macOS Nix, Home Manager and flakes
+=======
+  $HOME/.autojump/etc/profile.d/autojump.zsh               # manual installation
+  $HOME/.autojump/share/autojump/autojump.zsh              # manual installation
+  $HOME/.nix-profile/etc/profile.d/autojump.sh             # NixOS installation
+  /run/current-system/sw/share/autojump/autojump.zsh       # NixOS installation
+  /etc/profiles/per-user/$USER/share/autojump/autojump.zsh # Home Manager, NixOS with user-scoped packages
+  /usr/share/autojump/autojump.zsh                         # Debian and Ubuntu package
+  /etc/profile.d/autojump.zsh                              # manual installation
+  /etc/profile.d/autojump.sh                               # Gentoo installation
+  /usr/local/share/autojump/autojump.zsh                   # FreeBSD installation
+  /usr/pkg/share/autojump/autojump.zsh                     # NetBSD installation
+  /opt/local/etc/profile.d/autojump.sh                     # macOS with MacPorts
+  /usr/local/etc/profile.d/autojump.sh                     # macOS with Homebrew (default)
+  /opt/homebrew/etc/profile.d/autojump.sh                  # macOS with Homebrew (default on M1 macs)
+  /etc/profiles/per-user/$USER/etc/profile.d/autojump.sh   # macOS Nix, Home Manager and flakes
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 )
 
 for file in $autojump_paths; do

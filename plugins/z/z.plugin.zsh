@@ -100,6 +100,7 @@ With no ARGUMENT, list the directory history in ascending rank.
 }
 
 # Load zsh/datetime module, if necessary
+<<<<<<< HEAD
 (( $+EPOCHSECONDS )) || zmodload zsh/datetime
 
 # Load zsh/files, if necessary
@@ -110,10 +111,35 @@ With no ARGUMENT, list the directory history in ascending rank.
 
 # Load zsh/system, if necessary
 [[ ${modules[zsh/system]} == 'loaded' ]] || zmodload zsh/system &> /dev/null
+=======
+(( ${+EPOCHSECONDS} )) || zmodload zsh/datetime
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 # Global associative array for internal use
 typeset -gA ZSHZ
 
+<<<<<<< HEAD
+=======
+# Fallback utilities in case Zsh lacks zsh/files (as is the case with MobaXterm)
+ZSHZ[CHOWN]='chown'
+ZSHZ[MV]='mv'
+ZSHZ[RM]='rm'
+# Try to load zsh/files utilities
+if [[ ${builtins[zf_chown]-} != 'defined' ||
+      ${builtins[zf_mv]-}    != 'defined' ||
+      ${builtins[zf_rm]-}    != 'defined' ]]; then
+  zmodload -F zsh/files b:zf_chown b:zf_mv b:zf_rm &> /dev/null
+fi
+# Use zsh/files, if it is available
+[[ ${builtins[zf_chown]-} == 'defined' ]] && ZSHZ[CHOWN]='zf_chown'
+[[ ${builtins[zf_mv]-} == 'defined' ]] && ZSHZ[MV]='zf_mv'
+[[ ${builtins[zf_rm]-} == 'defined' ]] && ZSHZ[RM]='zf_rm'
+
+
+# Load zsh/system, if necessary
+[[ ${modules[zsh/system]-} == 'loaded' ]] || zmodload zsh/system &> /dev/null
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 # Make sure ZSHZ_EXCLUDE_DIRS has been declared so that other scripts can
 # simply append to it
 (( ${+ZSHZ_EXCLUDE_DIRS} )) || typeset -gUa ZSHZ_EXCLUDE_DIRS
@@ -145,7 +171,11 @@ is-at-least 5.3.0 && ZSHZ[PRINTV]=1
 zshz() {
 
   # Don't use `emulate -L zsh' - it breaks PUSHD_IGNORE_DUPS
+<<<<<<< HEAD
   setopt LOCAL_OPTIONS NO_KSH_ARRAYS NO_SH_WORD_SPLIT EXTENDED_GLOB
+=======
+  setopt LOCAL_OPTIONS NO_KSH_ARRAYS NO_SH_WORD_SPLIT EXTENDED_GLOB UNSET
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   (( ZSHZ_DEBUG )) && setopt LOCAL_OPTIONS WARN_CREATE_GLOBAL
 
   local REPLY
@@ -277,7 +307,11 @@ zshz() {
 
     if (( ret != 0 )); then
       # Avoid clobbering the datafile if the write to tempfile failed
+<<<<<<< HEAD
       zf_rm -f "$tempfile"
+=======
+      ${ZSHZ[RM]} -f "$tempfile"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
       return $ret
     fi
 
@@ -285,6 +319,7 @@ zshz() {
     owner=${ZSHZ_OWNER:-${_Z_OWNER}}
 
     if (( ZSHZ[USE_FLOCK] )); then
+<<<<<<< HEAD
       zf_mv "$tempfile" "$datafile" 2> /dev/null || zf_rm -f "$tempfile"
 
       if [[ -n $owner ]]; then
@@ -295,6 +330,19 @@ zshz() {
         zf_chown "${owner}":"$(id -ng "${owner}")" "$tempfile"
       fi
       zf_mv -f "$tempfile" "$datafile" 2> /dev/null || zf_rm -f "$tempfile"
+=======
+      ${ZSHZ[MV]} "$tempfile" "$datafile" 2> /dev/null || ${ZSHZ[RM]} -f "$tempfile"
+
+      if [[ -n $owner ]]; then
+        ${ZSHZ[CHOWN]} ${owner}:"$(id -ng ${owner})" "$datafile"
+      fi
+    else
+      if [[ -n $owner ]]; then
+        ${ZSHZ[CHOWN]} "${owner}":"$(id -ng "${owner}")" "$tempfile"
+      fi
+      ${ZSHZ[MV]} -f "$tempfile" "$datafile" 2> /dev/null ||
+          ${ZSHZ[RM]} -f "$tempfile"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
     fi
 
     # In order to make z -x work, we have to disable zsh-z's adding
@@ -306,7 +354,11 @@ zshz() {
   }
 
   ############################################################
+<<<<<<< HEAD
   # Read the curent datafile contents, update them, "age" them
+=======
+  # Read the current datafile contents, update them, "age" them
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   # when the total rank gets high enough, and print the new
   # contents to STDOUT.
   #
@@ -884,6 +936,12 @@ alias ${ZSHZ_CMD:-${_Z_CMD:-z}}='zshz 2>&1'
 #   ZSHZ
 ############################################################
 _zshz_precmd() {
+<<<<<<< HEAD
+=======
+  # Protect against `setopt NO_UNSET'
+  setopt LOCAL_OPTIONS UNSET
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   # Do not add PWD to datafile when in HOME directory, or
   # if `z -x' has just been run
   [[ $PWD == "$HOME" ]] || (( ZSHZ[DIRECTORY_REMOVED] )) && return
@@ -931,7 +989,11 @@ add-zsh-hook chpwd _zshz_chpwd
 # Completion
 ############################################################
 
+<<<<<<< HEAD
 # Standarized $0 handling
+=======
+# Standardized $0 handling
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 # https://zdharma-continuum.github.io/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
@@ -958,7 +1020,11 @@ ZSHZ[FUNCTIONS]='_zshz_usage
 # Enable WARN_NESTED_VAR for functions listed in
 #   ZSHZ[FUNCTIONS]
 ############################################################
+<<<<<<< HEAD
 (( ZSHZ_DEBUG )) && () {
+=======
+(( ${+ZSHZ_DEBUG} )) && () {
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
   if is-at-least 5.4.0; then
     local x
     for x in ${=ZSHZ[FUNCTIONS]}; do

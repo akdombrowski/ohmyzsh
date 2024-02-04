@@ -36,7 +36,10 @@ fi
 
 alias bcubc='brew upgrade --cask && brew cleanup'
 alias bcubo='brew update && brew outdated --cask'
+<<<<<<< HEAD
 alias bcubc='brew upgrade --cask && brew cleanup'
+=======
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 alias brewp='brew pin'
 alias brewsp='brew list --pinned'
 alias bubc='brew upgrade && brew cleanup'

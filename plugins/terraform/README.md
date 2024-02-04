@@ -26,6 +26,12 @@ plugins=(... terraform)
 | `tfo` | `terraform output`   |
 | `tfp` | `terraform plan`     |
 | `tfv` | `terraform validate` |
+<<<<<<< HEAD
+=======
+| `tfs` | `terraform state`    |
+| `tfsh`| `terraform show`    |
+
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 
 ## Prompt function
 

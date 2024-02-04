@@ -1,7 +1,11 @@
 # user, host, full path, and time/date on two lines for easier vgrepping
 
 function hg_prompt_info {
+<<<<<<< HEAD
   if (( $+commands[hg] )) && grep -q "prompt" ~/.hgrc; then
+=======
+  if (( $+commands[hg] )) && [[ -e ~/.hgrc ]] && grep -q "prompt" ~/.hgrc; then
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
     hg prompt --angle-brackets "\
 <hg:%{$fg[magenta]%}<branch>%{$reset_color%}><:%{$fg[magenta]%}<bookmark>%{$reset_color%}>\
 </%{$fg[yellow]%}<tags|%{$reset_color%}, %{$fg[yellow]%}>%{$reset_color%}>\

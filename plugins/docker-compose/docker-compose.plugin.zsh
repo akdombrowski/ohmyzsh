@@ -16,6 +16,10 @@ alias dcupdb="$dccmd up -d --build"
 alias dcdn="$dccmd down"
 alias dcl="$dccmd logs"
 alias dclf="$dccmd logs -f"
+<<<<<<< HEAD
+=======
+alias dclF="$dccmd logs -f --tail 0"
+>>>>>>> 21243709 (fix(sublime): pass user's env to `sst` (#12194))
 alias dcpull="$dccmd pull"
 alias dcstart="$dccmd start"
 alias dck="$dccmd kill"
