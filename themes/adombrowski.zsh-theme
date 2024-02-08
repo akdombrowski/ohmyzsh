@@ -217,8 +217,48 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  # prompt_segment blue $CURRENT_FG '%~'
-  prompt_segment blue $CURRENT_FG '%-1c/%c'
+  # set -x
+  # local parent='%-1/'
+  # # local parent='%-1/'
+  # # local pare='${%-1/}'
+  # # local par="${%-1/}"
+  # # local pa="${%-2/}"
+  # # local parr="%-1/"
+  # echo -e "parent"
+  # echo -e "$parent"
+  # echo -e "${parent}"
+  
+  # # prompt_segment blue $CURRENT_FG '%~'
+  # if [[ "$parent" = "$HOME" ]]; then
+  #   echo " parent is dir "
+  # else 
+  #   echo " parent $parent is not a dir "
+  # fi
+  # set +x
+
+
+  # set -x
+  # local parent="%2~"
+  # echo ${parent}
+  # echo "${parent}"
+  # if [[ -d "$2~" ]]; then
+  #     echo "'\$2~' is a dir"
+  #     # prompt_segment prompt_segment blue $CURRENT_FG '%2~'
+  # else
+  #     echo "'\$2~' is not a dir"
+  #     # prompt_segment prompt_segment blue $CURRENT_FG '~/.../%2~'
+  # fi
+
+  # if [[ '%2~' -ef "$HOME" ]]; then
+  #     echo "'\$2~' is home and '%2~' = %2~"
+  #     prompt_segment blue $CURRENT_FG '%2~'
+  # else
+  #     echo "'\$2~' is not home"
+  #     prompt_segment blue $CURRENT_FG '~/.../%2~'
+  # fi
+  # set +x  
+  
+  prompt_segment blue $CURRENT_FG "%2~"
 }
 
 # Virtualenv: current working virtualenv
@@ -259,6 +299,20 @@ prompt_time() {
   prompt_segment default cyan "%D{%X} "
 }
 
+# ## Main prompt
+# build_prompt() {
+#   RETVAL=$?
+#   prompt_time
+#   prompt_status
+#   prompt_virtualenv
+#   prompt_aws
+#   prompt_context
+#   prompt_dir
+#   prompt_git
+#   prompt_bzr
+#   prompt_hg
+#   prompt_end
+# }
 ## Main prompt
 build_prompt() {
   RETVAL=$?
