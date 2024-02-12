@@ -78,6 +78,41 @@ kaptchame() {
   copy "$kaptchame"
 }
 
+kaptchaMe_renameFile() {
+  # $opt will hold the current option
+  local opt
+  local xtn
+  while getopts x: opt; do
+    # loop continues till options finished
+    # see which pattern $opt matches...
+    case $opt in
+    x)
+      xtn=".$OPTARG"
+      print "extension = $OPTARG"
+      ;;
+    b)
+      print "Option b's value = $OPTARG"
+      ;;
+      # matches a question mark
+      # (and nothing else, see text)
+    \?)
+      print Bad option, aborting.
+      return 1
+      ;;
+    esac
+  done
+  ((OPTIND > 1)) && shift "$((OPTIND - 1))"
+
+  for file in *(N); do
+    if [[ "${file: -${#xtn}}" == "${xtn}" ]]; then
+      name="katpcha-me-$(uuidgen -r)"
+      echo "${file}"
+      print "${name}${xtn}"
+      cp $file "${name}${xtn}"
+    fi
+  done
+}
+
 magickToolAliases() {
   als=$(alias | grep "magick")
   echo "$als"
