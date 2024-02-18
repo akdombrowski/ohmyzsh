@@ -13,3 +13,5 @@ alias magickImport="import"
 alias magickMogrify="mogrify"
 alias magickMontage="montage"
 alias magickStream="stream"
+
+alias ncu="npx npm-check-updates"
