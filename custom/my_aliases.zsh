@@ -15,3 +15,4 @@ alias magickMontage="montage"
 alias magickStream="stream"
 
 alias ncu="npx npm-check-updates"
+alias eless="ls -A -sS -p -h -gG"
