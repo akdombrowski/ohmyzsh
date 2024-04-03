@@ -1,28 +1,34 @@
-copy() {
-  # $opt will hold the current option
-  local opt
-  while getopts ab: opt; do
-    # loop continues till options finished
-    # see which pattern $opt matches...
-    case $opt in
-    a)
-      print "Option a's value = $OPTARG"
-      ;;
-    b)
-      print "Option b's value = $OPTARG"
-      ;;
-      # matches a question mark
-      # (and nothing else, see text)
-    \?)
-      print Bad option, aborting.
-      return 1
-      ;;
-    esac
-  done
-  ((OPTIND > 1)) && shift "$((OPTIND - 1))"
+rnd() {
+  local rnd="$(openssl rand -base64 128)"
+  local rndOneLine="${rnd//[$'\t\r\n ']/}"
+  echo "$rndOneLine"
+  echo -n "$rndOneLine" | xclip -selection clipboard
+}
 
-  echo -n "$1" | xclip -selection clipboard
-  echo "$1 ---> copied to clipboard"
+rndN() {
+  local n="$1"
+  if [[ -z "$n" || "$n" -le 0 ]]; then
+    echo "follow 'rndN' with number of bytes needed" >&2
+  else
+    local rnd="$(openssl rand -base64 $n)"
+    local rndOneLine="${rnd//[$'\t\r\n ']/}"
+    local msg='on clipboard:'
+    echo -n "$rndOneLine" | xclip -selection clipboard
+    echo "$msg"
+    echo "$rndOneLine"
+  fi
+}
+
+copy() {
+  local argz="$*"
+  if [[ -z "$argz" ]]; then
+    echo "put something after 'copy' to copy. copy?" >&2
+  elif [[ -n "$argz" ]]; then
+    local msg='on clipboard:'
+    echo -n "$argz" | xclip -selection clipboard
+    echo "$msg"
+    echo "$argz"
+  fi
 }
 
 rndSuffix() {

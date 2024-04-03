@@ -17,7 +17,4 @@ alias magickStream="stream"
 alias ncu="yarn dlx npm-check-updates"
 alias npx_ncu="npx npm-check-updates"
 
-alias rndStr='openssl rand -base64 128'
-alias rndStrN='openssl rand -base64'
-
 alias eless="ls -A -sS -p -h -gG"
