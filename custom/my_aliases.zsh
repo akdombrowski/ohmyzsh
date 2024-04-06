@@ -18,3 +18,5 @@ alias ncu="yarn dlx npm-check-updates"
 alias npx_ncu="npx npm-check-updates"
 
 alias eless="ls -A -sS -p -h -gG"
+
+alias subl='/mnt/a/Program\ Files/Sublime\ Text/subl.exe'
