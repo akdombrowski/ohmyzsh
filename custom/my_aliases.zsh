@@ -14,6 +14,9 @@ alias magickMogrify="mogrify"
 alias magickMontage="montage"
 alias magickStream="stream"
 
+alias ink="~/inkscape/squashfs-root/AppRun"
+alias inkview="ink inkview"
+
 alias ncu="yarn dlx npm-check-updates"
 alias npx_ncu="npx npm-check-updates"
 
