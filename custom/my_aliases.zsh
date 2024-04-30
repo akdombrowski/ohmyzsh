@@ -38,3 +38,5 @@ alias llsrecurs='ls --group-directories-first -lARh --tabsize=128'
 alias llt='ls --group-directories-first -lth --tabsize=128'
 
 alias subl='/mnt/a/Program\ Files/Sublime\ Text/subl.exe'
+
+alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
