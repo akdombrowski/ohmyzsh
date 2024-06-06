@@ -150,10 +150,16 @@ export PATH="$PATH:/usr/local/go/bin"
 # pnpm
 export PNPM_HOME="/home/adombrowski/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
 export DEFAULT_USERNAME="adombrowski"
 export DEFAULT_USER="adombrowski"
+
+# watchman bin
+PATH=$PATH:~/watchman-v2024.04.08.00-linux/bin
+
+
+PATH=$PATH:~/.console-ninja/.bin

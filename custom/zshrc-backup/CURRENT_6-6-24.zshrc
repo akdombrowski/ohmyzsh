@@ -158,4 +158,11 @@ esac
 export DEFAULT_USERNAME="adombrowski"
 export DEFAULT_USER="adombrowski"
 
+# watchman bin
+PATH=$PATH:~/watchman-v2024.04.08.00-linux/bin
+
+
 PATH=$PATH:~/.console-ninja/.bin
+
+# put TABSIZE=0 in your environment, to tell `ls` to align using spaces, not tabs.
+export TABSIZE=0

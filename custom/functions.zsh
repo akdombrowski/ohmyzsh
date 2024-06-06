@@ -1,3 +1,16 @@
+#!/usr/bin/env BASH
+
+#
+# ---HELPFUL BASH COMMANDS---
+#
+# replace one match in string
+# ${parameter/pattern/string}
+# replace all matches in string
+# ${parameter//pattern/string}
+#
+#
+#
+
 rnd() {
   local rnd="$(openssl rand -base64 128)"
   local rndOneLine="${rnd//[$'\t\r\n ']/}"
@@ -28,6 +41,30 @@ copy() {
     echo -n "$argz" | xclip -selection clipboard
     echo "$msg"
     echo "$argz"
+  fi
+}
+
+
+sortaEllas() {
+  local argat="$@"
+  local arg1="$1"
+  local arg2Infini="${@:2}"
+  if [[ -z "$argat" ]]; then
+    echo "provide one sort option: none, size, time, version, extension" >&2
+    echo "e.g.: 'sortaEllas time'" >&2
+  elif [[ -n "$argat" ]]; then
+    if [[ -z "$arg2Infini" ]]; then
+      # echo "sorted by: $arg1"
+      # echo ""
+      echo "$(ls -A --sort=$arg1)" >&2
+    elif [[ -n "$arg2Infini" ]]; then
+      local noDashes="${arg2Infini//-/}"
+      local noSpaces="${noDashes// /}"
+      # echo "sorted by: $arg1 AND flags: -$noSpaces"
+      # echo ""
+      #  ${parameter//pattern/string}
+      echo "$(ls -A --sort=$arg1 -$noSpaces)" >&2
+    fi
   fi
 }
 
