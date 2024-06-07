@@ -21,7 +21,7 @@ alias ncu="yarn dlx npm-check-updates"
 alias npx_ncu="npx npm-check-updates"
 
 alias eless='ls -A -sS -p -h -gG --color'
-alias ls='ls --color'
+alias ls='ls --color --group-directories-first'
 alias lsplain='ls --color=never'
 alias la1='ls -A1'
 alias la='ls -A'
