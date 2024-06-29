@@ -161,6 +161,13 @@ magickToolAliases() {
   echo "$als"
 }
 
+# prints the env var name and value for the paths to various dir's
+wslPaths() {
+  for p in "${WSL_PATHS[@]}"; do  # loop through the array
+    printenv | grep -w $p
+  done
+}
+
 # testpromptdir() {
 #   echo 'echo ${+PROMPT_PERCENT}'
 #   echo ${+PROMPT_PERCENT}
