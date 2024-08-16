@@ -33,7 +33,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-corepack enable && yarn set version stable --only-if-needed
+# corepack enable && yarn set version stable --only-if-needed
 
 export PATH="$PATH:~/dart-sass"
 
@@ -71,13 +71,16 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# Java
+export JAVA_HOME="/usr/java/jdk-22-oracle-x64"
+
 export DEFAULT_USERNAME="adombrowski"
 export DEFAULT_USER="adombrowski"
 
 # watchman bin
-export PATH=$PATH:~/watchman-v2024.04.08.00-linux/bin
+export PATH="$PATH:~/watchman-v2024.04.08.00-linux/bin"
 
-export PATH="$PATH:~/jdk-22.0.1/bin"
+# export PATH="~/jdk-22.0.1/bin:$PATH"
 
 export ANDROID_HOME="/mnt/a/akdfl/android_studio/android-sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator"

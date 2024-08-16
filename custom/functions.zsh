@@ -11,6 +11,30 @@
 #
 #
 
+renameFilesReplaceDir() {
+  local searchTerm="$1"
+  local replaceTerm="$2"
+  if [[ -z "$searchTerm" ]]; then
+    echo "add search and replace terms after the command..." >&2
+    echo "e.g.," >&2
+    echo "renameFilesReplaceDir \"SEARCH_TERM\" \"REPLACE_TERM\"" >&2
+    return
+  elif [[ -z "$replaceTerm" ]]; then
+    echo "add another term to replace the search term with or empty quotes to remove" >&2
+    echo "e.g.," >&2
+    echo "renameFilesReplaceDir \"SEARCH_TERM\" \"REPLACE_TERM\"" >&2
+    echo "or" >&2
+    echo "renameFilesReplaceDir \"SEARCH_TERM\" \"\"" >&2
+    return
+  fi
+
+  for file in *(N); do
+    local newFilename="${file/${searchTerm}/${replaceTerm}}"
+    echo "${file} -> ${newFilename}"
+    # cp "$file"
+  done
+}
+
 rnd() {
   local rnd="$(openssl rand -base64 128)"
   local rndOneLine="${rnd//[$'\t\r\n ']/}"
@@ -43,7 +67,6 @@ copy() {
     echo "$argz"
   fi
 }
-
 
 sortaEllas() {
   local argat="$@"
@@ -163,7 +186,7 @@ magickToolAliases() {
 
 # prints the env var name and value for the paths to various dir's
 wslPaths() {
-  for p in "${WSL_PATHS[@]}"; do  # loop through the array
+  for p in "${WSL_PATHS[@]}"; do # loop through the array
     printenv | grep -w $p
   done
 }
