@@ -49,3 +49,17 @@ alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 alias chromeDebug='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe --remote-debugging-port=9222 --user-data-dir=remote-debug-profile'
 
 alias yarndk='yarn dlx @yarnpkg/sdks vscode'
+
+alias funs="echo 'renameFilesReplaceDir() \n\
+rnd() \n\
+rndN() \n\
+copy() \n\
+sortaEllas() \n\
+rndSuffix() \n\
+rndPrefix() \n\
+rndUUID() \n\
+kaptchame() \n\
+kaptchaMe_renameFile() \n\
+magickToolAliases() \n\
+wslPaths() \n\
+testopts()'"
