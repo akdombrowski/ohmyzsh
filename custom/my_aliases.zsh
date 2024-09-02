@@ -1,3 +1,6 @@
+# spaces on ends are intentional in case need sudo at the front and to add the search term at the end
+alias searchAPTByName=' apt search --names-only '
+
 # alias python=python3
 alias zoursh="source ~/.zshrc"
 alias mai="conda activate music-reco"
