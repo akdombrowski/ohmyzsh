@@ -122,8 +122,8 @@ rndSuffix() {
 
   if [[ -n "$wantsCopyToClipboard" ]]; then
     echo -n "$rnd" | xclip -selection clipboard
-    echo "$rnd"
   fi
+    echo "$rnd"
 }
 
 rndPrefix() {

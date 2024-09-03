@@ -1,12 +1,14 @@
 # Customizations to .zshrc file
 
+# source functions
+source "$HOME/.oh-my-zsh/custom/funs/kmNameRND.zsh"
+
 # rather than adding stuff to the .zshrc file in the home dir which isnt being syncd with git
 # this file is read by oh-my-zsh.sh
 # can add what you would've put into ~/.zshrc like path variables
 
 # export PATH="$PATH:/home/adombrowski/.local/bin"
 export PATH="$PATH:/usr/lib/wsl/lib"
-
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -56,7 +58,6 @@ unset __conda_setup
 # conda config --set auto_activate_base True
 conda config --set auto_activate_base False
 export PATH="$PATH:/usr/local/cuda-12.5/bin"
-
 
 # export PATH="$PATH:$(yarn global bin)"
 
