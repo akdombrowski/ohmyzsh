@@ -53,6 +53,9 @@ alias chromeDebug='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe --r
 
 alias yarndk='yarn dlx @yarnpkg/sdks vscode'
 
+alias python3='python3.13'
+alias python='python3.13'
+
 alias funs="echo 'renameFilesReplaceDir() \n\
 rnd() \n\
 rndN() \n\
