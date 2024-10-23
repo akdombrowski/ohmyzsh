@@ -1,3 +1,7 @@
+alias os="echo $(uname -sro)"
+
+# alias whichAlias="echo common_aliases"
+
 # spaces on ends are intentional in case need sudo at the front and to add the search term at the end
 alias searchAPTByName=' apt search --names-only '
 
@@ -17,8 +21,8 @@ alias magickMogrify="mogrify"
 alias magickMontage="montage"
 alias magickStream="stream"
 
-alias ink="~/inkscape/squashfs-root/AppRun"
-alias inkview="ink inkview"
+# alias ink="~/inkscape/squashfs-root/AppRun"
+# alias inkview="ink inkview"
 
 alias yarnOn="corepack enable && yarn set version stable --only-if-needed"
 alias ncu="yarn dlx npm-check-updates"
@@ -44,12 +48,7 @@ alias llsa='ls -lah'
 alias llsrecurs='ls -lARh'
 alias llt='ls -lth'
 
-alias subl='/mnt/a/Program\ Files/Sublime\ Text/subl.exe'
-alias code='/mnt/a/Program\ Files/Microsoft\ VS\ Code/Code.exe'
-
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
-
-alias chromeDebug='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe --remote-debugging-port=9222 --user-data-dir=remote-debug-profile'
 
 alias yarndk='yarn dlx @yarnpkg/sdks vscode'
 
