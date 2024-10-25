@@ -8,7 +8,6 @@ source "$HOME/.oh-my-zsh/custom/funs/kmNameRND.zsh"
 # can add what you would've put into ~/.zshrc like path variables
 
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:/usr/lib/wsl/lib"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -37,7 +36,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # corepack enable && yarn set version stable --only-if-needed
 
-export PATH="$PATH:$HOME/dart-sass"
+# export PATH="$PATH:$HOME/dart-sass"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -55,15 +54,15 @@ export PATH="$PATH:$HOME/dart-sass"
 # <<< conda initialize <<<
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(\"$HOME\"'/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$(\"$HOME\"'/miniconda3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="$PATH:$HOME/miniconda3/bin"
-    fi
+  if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/miniconda3/etc/profile.d/conda.sh"
+  else
+    export PATH="$PATH:$HOME/miniconda3/bin"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
@@ -110,20 +109,15 @@ export PATH="$PATH:$HOME/.console-ninja/.bin"
 # put TABSIZE=0 in your environment, to tell `ls` to align using spaces, not tabs.
 export TABSIZE=0
 
-# asus windows laptop paths from WSL
-export DRIVE_A='/mnt/a'
-export DRIVE_C='/mnt/c'
-export AKDFL="${DRIVE_A}/akdfl"
-export PICS="${AKDFL}/A_Pictures"
-export ANTHONY_PICS="${PICS}/anthony"
-export KAPTCHA_ME_PICS="${PICS}/kaptcha-me"
-export STOCK_PICS="${PICS}/stock-imgs"
-export ICONS_PICS="${STOCK_PICS}/icons"
-export CAR_PICS="${PICS}/car"
-export VIDS="${AKDFL}/A_Videos"
-export DOCS="${AKDFL}/A_Documents"
-export A_MUSIC="${AKDFL}/A_Music"
-export DOWNLOADS="${AKDFL}/A_Downloads"
-export A_AUDIO="${AKDFL}/audio"
-export ADOMBROWSKI="${DRIVE_C}/Users/adombrowski"
-export WSL_PATHS=("DRIVE_A" "DRIVE_C" "AKDFL" "PICS" "ANTHONY_PICS" "KAPTCHA_ME_PICS" "STOCK_PICS" "ICONS_PICS" "CAR_PICS" "VIDS" "DOCS" "A_MUSIC" "DOWNLOADS" "A_AUDIO" "ADOMBROWSKI")
+export OS="$(uname -sro)"
+export ALIASES_DIR="$ZSH/custom/aliases"
+export OS_SPECIFIC_CONFIG_DIR="$ZSH/custom/os-specific-config"
+
+source $ALIASES_DIR/common_aliases.zsh
+
+# adds things like aliases and paths specific to the platform
+if [[ ${OS} =~ "[lL]inux" ]]; then
+  source "$OS_SPECIFIC_CONFIG_DIR/ubu.zshrc"
+else
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zshrc"
+fi
