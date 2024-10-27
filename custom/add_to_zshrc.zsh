@@ -113,8 +113,10 @@ export OS="$(uname -sro)"
 export ALIASES_DIR="$ZSH/custom/aliases"
 export OS_SPECIFIC_CONFIG_DIR="$ZSH/custom/os-specific-config"
 
+# shared config
 source $ALIASES_DIR/common_aliases.zsh
 
+# platform-specific
 # adds things like aliases and paths specific to the platform
 if [[ ${OS} =~ "[lL]inux" ]]; then
   source "$OS_SPECIFIC_CONFIG_DIR/ubu.zshrc"
