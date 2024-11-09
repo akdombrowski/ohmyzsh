@@ -48,6 +48,9 @@ alias llsa='ls -lah'
 alias llsrecurs='ls -lARh'
 alias llt='ls -lth'
 
+alias copyToClip="xclip -selection clipboard -f -r && echo ''"
+alias fromClip="echo $(xclip -o  -selection \"clipboard\")"
+
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 
 alias yarndk='yarn dlx @yarnpkg/sdks vscode'
