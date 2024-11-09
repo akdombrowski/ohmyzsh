@@ -7,7 +7,7 @@ source "$HOME/.oh-my-zsh/custom/funs/kmNameRND.zsh"
 # this file is read by oh-my-zsh.sh
 # can add what you would've put into ~/.zshrc like path variables
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:/sbin:/usr/sbin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
