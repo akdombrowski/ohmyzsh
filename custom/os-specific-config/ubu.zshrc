@@ -1,6 +1,6 @@
 # PATH env var
-export PATH="$PATH:$HOME/.local/kitty.app/bin"
-export PATH="$PATH:/snap/bin"
+export PATH="$PATH:$HOME/.local"
+export PATH="$PATH:/snap/bin:/opt"
 
 # Aliases
 source $ALIASES_DIR/mint_aliases.zsh

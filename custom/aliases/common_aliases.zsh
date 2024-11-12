@@ -7,7 +7,7 @@ alias searchAPTByName=' apt search --names-only '
 
 # alias python=python3
 alias zoursh="source ~/.zshrc"
-alias mai="conda activate music-reco"
+# alias mai="conda activate music-reco"
 alias condact="conda activate "
 
 alias magick="convert"
@@ -48,8 +48,8 @@ alias llsa='ls -lah'
 alias llsrecurs='ls -lARh'
 alias llt='ls -lth'
 
-alias copyToClip="xclip -selection clipboard -f -r && echo ''"
-alias fromClip="echo $(xclip -o  -selection \"clipboard\")"
+alias copyToClip="xclip -selection clipboard -f -r && echo "
+alias fromClip="xclip -o -selection clipboard && echo "
 
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 
