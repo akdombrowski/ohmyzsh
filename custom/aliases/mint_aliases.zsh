@@ -7,3 +7,6 @@ alias setDefaultFileMgr="echo $(xdg-mime default org.kde.dolphin.desktop inode/d
 
 
 alias subl="/opt/sublime_text/sublime_text --launch-or-new-window "
+
+alias inputDevicesList="xinput --list --short"
+alias ergo="xinput --list-props \"ERGO M575 Mouse\""

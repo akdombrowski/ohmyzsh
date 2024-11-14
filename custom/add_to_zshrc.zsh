@@ -113,6 +113,8 @@ export OS="$(uname -sro)"
 export ALIASES_DIR="$ZSH/custom/aliases"
 export OS_SPECIFIC_CONFIG_DIR="$ZSH/custom/os-specific-config"
 
+export ZSH_CUSTOM
+
 # shared config
 source $ALIASES_DIR/common_aliases.zsh
 
