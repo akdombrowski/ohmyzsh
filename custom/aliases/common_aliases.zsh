@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 alias os="echo $(uname -sro)"
 
 # alias whichAlias="echo common_aliases"

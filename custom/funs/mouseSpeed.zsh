@@ -32,8 +32,9 @@ get_ergo_speed() {
   echo "$(xinput list-props 'ERGO M575 Mouse' | grep -ioP '(?<=Accel Speed \(\d\d\d\)\:\s).?\d+.?\d*')"
 }
 
-set_mouse_speed_fast() {
-  echo "hello, world"
+get_ergo_feedbacks() {
+  local feedback="$(xinput get-feedbacks 'ERGO M575 Mouse')"
+  printf "$(echo \"$feedback\" | grep -i 'is')"
 }
 
 set_ergo_feedback() {
@@ -48,7 +49,8 @@ set_ergo_feedback() {
   #  back setting.
 
   # default is 2 1 4
-  xinput set-ptr-feedback "ERGO M575 Mouse" 2 1 4
+  xinput set-ptr-feedback "ERGO M575 Mouse" 0 3 1
+  # printf "updated feedback: \n%s" "$(xinput get-feedbacks 'ERGO M575 Mouse')"
 }
 
 set_ergo_mouse_speed() {
@@ -73,7 +75,7 @@ set_ergo_mouse_speed() {
     s)
       # set mouse speed to specified value\
       SPEED="$OPTARG"
-      printf "setting mouse speed to $SPEED \n"
+      # printf "setting mouse speed to $SPEED \n"
       ;;
     f)
       # SET MOUSE SPEED TO $MAX_MOUSE_SPEED
@@ -129,13 +131,13 @@ set_ergo_mouse_speed() {
   local MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575')"
   # local MOUSE_ID="$(xinput list --id-only $MOUSE_NAME)"
 
-  printf "MOUSE_NAME: %s \n\n" "$MOUSE_NAME"
+  # printf "MOUSE_NAME: %s \n\n" "$MOUSE_NAME"
   # printf "MOUSE_ID: %s \n\n" "$MOUSE_ID"
 
   if [ -z "$MOUSE_NAME" ]; then
-    printf "MOUSE_NAME var empty \n"
+    printf "MOUSE_NAME var empty. Couldn't find the right mouse. \n"
   else
-    printf "%s \n" "$MOUSE_NAME"
+    # printf "%s \n" "$MOUSE_NAME"
 
     xinput set-prop "$MOUSE_NAME" "libinput Accel Speed" "$SPEED"
   fi

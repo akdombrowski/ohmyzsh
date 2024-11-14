@@ -4,7 +4,7 @@ export PATH="$PATH:/snap/bin:/opt"
 
 export MAX_MOUSE_SPEED=2
 export MIN_MOUSE_SPEED=0.1
-export CURR_MOUSE_SPEED="$()"
+export CURR_MOUSE_SPEED="\$()"
 export MOUSE_NAME_LOGI="Logitech ERGO M575"
 export MOUSE_NAME_BT="ERGO M575 Mouse"
 
