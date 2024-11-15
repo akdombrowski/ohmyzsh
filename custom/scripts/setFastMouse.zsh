@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 # shellcheck source=../funs/mouseSpeed.zsh
-. "$ZSH_CUSTOM/funs/mouseSpeed.zsh"
+# . "$ZSH_CUSTOM/funs/mouseSpeed.zsh"
+. "$ZSH_CUSTOM/funs/mouseSpeed.sh"
 
 # printf "\nCURRENT ergo speed: %s \n" "$(get_ergo_speed)"
 

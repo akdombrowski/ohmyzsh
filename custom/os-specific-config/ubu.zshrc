@@ -7,9 +7,11 @@ export MIN_MOUSE_SPEED=0.1
 export CURR_MOUSE_SPEED="\$()"
 export MOUSE_NAME_LOGI="Logitech ERGO M575"
 export MOUSE_NAME_BT="ERGO M575 Mouse"
+export SET_FAST_MOUSE_SCRIPT="$ZSH_CUSTOM/scripts/setFastMouse.sh"
 
 # Aliases
 source $ALIASES_DIR/mint_aliases.zsh
+
 
 # anaconda
 # # >>> conda initialize >>>

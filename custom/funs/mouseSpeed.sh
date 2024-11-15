@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # from xset man page
 #  By default the pointer (the on-screen  representation  of  the
@@ -119,7 +119,10 @@ set_ergo_mouse_speed() {
       ;;
     esac
   done
-  ( (OPTIND >1)) && shift "$((OPTIND - 1))"
+  if [ "${OPTIND}" -gt 1 ]; then
+    shift "$((OPTIND - 1))"
+  fi
+  # ((OPTIND >1)) && shift "$((OPTIND - 1))"
 
   # Props
   # libinput Accel Speed (349):	-0.858065

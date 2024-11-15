@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-export SET_FAST_MOUSE_SCRIPT="$ZSH_CUSTOM/scripts/setFastMouse.zsh"
 
 alias os="echo $(uname -sro)"
 
