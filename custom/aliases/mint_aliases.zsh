@@ -24,3 +24,4 @@ alias setErgoFeed="xinput set-ptr-feedback \"ERGO M575 Mouse\" "
 alias setErgoSpeed="xinput set-prop \"ERGO M575 Mouse\" \"libinput Accel Speed\" "
 # script which sets both ergo accel speed and feedback
 alias setErgoFast=". $SET_FAST_MOUSE_SCRIPT 1"
+alias phast=". $SET_FAST_MOUSE_SCRIPT 1"

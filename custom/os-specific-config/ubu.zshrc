@@ -1,6 +1,9 @@
 # PATH env var
 export PATH="$PATH:$HOME/.local"
-export PATH="$PATH:/snap/bin:/opt"
+export PATH="$PATH:/snap/bin:/snap:/opt"
+
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_STYLE_OVERRIDE="qt5ct"
 
 export MAX_MOUSE_SPEED=2
 export MIN_MOUSE_SPEED=0.1
