@@ -12,9 +12,21 @@ export MOUSE_NAME_LOGI="Logitech ERGO M575"
 export MOUSE_NAME_BT="ERGO M575 Mouse"
 export SET_FAST_MOUSE_SCRIPT="$ZSH_CUSTOM/scripts/setFastMouse.sh"
 
+# locations for various app files in linux mint
+export FLATPAK_APPS='/var/lib/flatpak/app'
+export LOCAL_SNAP_APPS="$HOME/snap"
+export ROOT_SNAP_APPS='/snap'
+export LOCAL_DESKTOP_FILES="$HOME/.local/share/applications"
+export LOCAL_APP_FILES="$HOME/.var/app"
+export LOCAL_APP_CONFIG="$HOME/.config"
+export OTHER_APPS='/opt'
+export USR_BIN='/usr/bin'
+export USR_LIB='/usr/lib'
+export USR_SHARE='/usr/share'
+
+
 # Aliases
 source $ALIASES_DIR/mint_aliases.zsh
-
 
 # anaconda
 # # >>> conda initialize >>>
@@ -35,20 +47,20 @@ source $ALIASES_DIR/mint_aliases.zsh
 # mini-forge
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/akdombrowski/workspace/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/akdombrowski/workspace/miniforge3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="$PATH:/home/akdombrowski/workspace/miniforge3/bin"
-    fi
+  if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh" ]; then
+    . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh"
+  else
+    export PATH="$PATH:/home/akdombrowski/workspace/miniforge3/bin"
+  fi
 fi
 unset __conda_setup
 
 if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh"
+  . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 

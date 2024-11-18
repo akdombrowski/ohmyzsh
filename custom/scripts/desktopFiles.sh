@@ -1,19 +1,37 @@
 #!/bin/bash
 
 get_flatpak_apps() {
-  echo ""
-  ls -C /var/lib/flatpak/app
-  echo ""
+  # echo ""
+  # ls -C /var/lib/flatpak/app
+  # echo ""
   local app_dir
+  local app_dir2
+  local app_dir3
+  local app_dir4
   local apps
-  app_dir="/var/lib/flatpak/app"
 
+  zsh /home/akdombrowski/.zshrc
+
+  app_dir="$FLATPAK_APPS"
+  app_dir2="$LOCAL_SNAP_APPS"
+  app_dir3="$ROOT_SNAP_APPS"
+  app_dir4="$OTHER_APPS"
+
+  # printf "searching for apps in... \n%s \n%s \n%s \n%s \n" "$app_dir" "$app_dir2" "$app_dir3" "$app_dir4"
   # use find -exec instead of for loop
-  find "$app_dir" -mindepth 1 -type f -regex ".*/share/applications/.*\.desktop"
-  # for file in "$app_dir"/**/share/applications/*.desktop; do
+  # https://man7.org/linux/man-pages/man1/find.1.html
+  find "$app_dir" -mindepth 2 -type f -name "*.desktop" -printf "%f \n" -exec grep -iP "Exec=" ";"
+  printf "\n"
+  find "$app_dir2" -mindepth 2 -type f -name "*.desktop" -printf "%f \n"
+  printf "\n"
+  sudo find "$app_dir3" -mindepth 2 -type f -name "*.desktop" -printf "%f \n"
+  printf "\n"
+  sudo find "$app_dir4" -mindepth 2 -type f -name "*.desktop" -printf "%f \n"
+  printf "\n"
+  # # for file in "$app_dir"/**/share/applications/*.desktop; do
   #   echo "$file"
   # done;
-  echo ""
+  # echo ""
 }
 
 get_desktops() {
