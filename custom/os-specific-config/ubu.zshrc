@@ -1,7 +1,7 @@
 # PATH env var
 export PATH="$PATH:$HOME/.local"
 export PATH="$PATH:/snap/bin:/snap:/opt"
-export PATH="$PATH:bin"
+# export PATH="$PATH:bin"
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE="qt5ct"
