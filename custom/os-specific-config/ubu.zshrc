@@ -27,6 +27,7 @@ export USR_SHARE='/usr/share'
 
 # functions
 source "$ZSH_CUSTOM/funs/setFastMouse.sh"
+source "$ZSH_CUSTOM/funs/brightness.sh"
 
 # Aliases
 source $ALIASES_DIR/mint_aliases.zsh
