@@ -51,6 +51,29 @@ set_ergo_feedback() {
   #  place, but complement the  pointer  feed‐
   #  back setting.
 
+  local accel
+  local denom
+  local threshold
+  accel="$1"
+  denom="$2"
+  threshold="$3"
+
+  # if no argument was given, set speed to default defined above
+  if [ $# = 0 ]; then
+    printf "resetting mouse speed to %s \n" "$DEFAULT_SPEED"
+  else
+    if [ -n "$accel" ]; then
+      accel=3
+    fi
+    if [ -n "$denom" ]; then
+      denom=3
+    fi
+    if [ -n "$threshold" ]; then
+      threshold=3
+    fi
+    printf "setting mouse speed to %s %s %s \n" "$accel" "$denom" "$threshold"
+  fi
+
   # default is 2 1 4
   xinput set-ptr-feedback "ERGO M575 Mouse" 0 3 1
   # printf "updated feedback: \n%s" "$(xinput get-feedbacks 'ERGO M575 Mouse')"
@@ -148,6 +171,7 @@ set_ergo_mouse_speed() {
   else
     # printf "%s \n" "$MOUSE_NAME"
 
+    #
     xinput set-prop "$MOUSE_NAME" "libinput Accel Speed" "$SPEED"
   fi
 

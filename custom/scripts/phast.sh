@@ -14,7 +14,7 @@ set_ergo_mouse_speed -s "$1"
 
 # printf "\ndone\n\nsetting feedback...\n\n"
 
-set_ergo_feedback
+set_ergo_feedback -s "$2" "$3" "$4"
 
 # printf "\n\ndone\n"
 
