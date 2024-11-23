@@ -30,25 +30,42 @@ alias yarnOn="corepack enable && yarn set version stable --only-if-needed"
 alias ncu="yarn dlx npm-check-updates"
 alias npx_ncu="npx npm-check-updates"
 
-alias eless='ls -A -sS -p -h -gG --color'
-alias ls='ls --color --group-directories-first'
+alias eless='ls -A -sS -p -h -gG --color --group-directories-first'
+alias ls='ls --color --group-directories-first -gGohsA -p'
+# format when...
+alias lsF='ls -F '
+#
+alias lsa1='ls -A1'
+# sort
+alias lst='ls -t'
+alias lsv='ls -v'
+alias lstc='ls -tc'
+alias lstC='ls -t --time=creation'
+alias lsS='ls -S'
+alias lsX='ls -X'
+# reverse sort
+alias lsrt='lst -r'
+alias lsrc='lsc -r'
+alias lsrtc='lstc -r'
+alias lsrtC='lstC -r'
+alias lsrv='lsv -r'
+alias lsrS='lsS -r'
+alias lsrX='lsX -r'
+# output format
+alias lsacross='ls -x'
+alias lscomma='ls -m'
+alias lscol='ls -C'
+alias lsdir='ls -d'
+#
+alias lsdot='ls -d .* '
+alias lsR='ls -R'
 alias lsplain='ls --color=never'
-alias la1='ls -A1'
-alias la='ls -A'
-alias lacomma='ls -Am'
-alias lg='ls -gh'
-alias lga='ls -gAh'
-alias ldot='ls -gd .* '
-alias lsa='ls -gah'
-alias lsrecurs='ls -gARh'
-alias lt='ls -gth'
-alias ll='ls -l'
-alias ll='ls -lh'
-alias lla='ls -lAh'
-alias lldot='ls -ld .*'
-alias llsa='ls -lah'
-alias llsrecurs='ls -lARh'
-alias llt='ls -lth'
+# detailed
+alias lls='ls -log'
+alias llsdots='ll -d .*'
+alias llsR='ll -R'
+alias llst='ll -t'
+alias lsShort="alias | grep \"ls\""
 
 alias copyToClip="xclip -selection clipboard -f -r && echo "
 alias fromClip="xclip -o -selection clipboard && echo "
