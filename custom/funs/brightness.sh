@@ -1,14 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
-get_configs() {
-  ls ~/Cinnamon/.nvidia-settings*
+export HOME_CINNAMON_DIR="$HOME/Cinnamon"
+
+nv_bright_configs() {
+  ls "$HOME_CINNAMON_DIR"/.nvidia-settings*
 }
 
-set() {
-  nvidia-settings --load-config-only --config="~/.nvidia-settings-rc${1:+_$1}"
-
-}
-
-test() {
-  echo "${1:+_$1}"
+nv_bright() {
+  local config_file
+  config_file="$HOME_CINNAMON_DIR/.nvidia-settings-rc${1:+_$1}"
+  nvidia-settings -l --config="$config_file" -V "all"
 }

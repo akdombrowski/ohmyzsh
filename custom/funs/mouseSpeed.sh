@@ -66,16 +66,18 @@ set_ergo_feedback() {
       accel=3
     fi
     if [ -n "$denom" ]; then
-      denom=3
+      denom=1
     fi
     if [ -n "$threshold" ]; then
-      threshold=3
+      threshold=0
     fi
-    printf "setting mouse speed to %s %s %s \n" "$accel" "$denom" "$threshold"
+    printf "setting mouse speed to threshold=%s accel=%s denom=%s \n" "$threshold" "$accel" "$denom"
   fi
 
+  # arguments are: <threshold> <num> <denom>
   # default is 2 1 4
-  xinput set-ptr-feedback "ERGO M575 Mouse" 0 3 1
+  # xinput set-ptr-feedback "ERGO M575 Mouse" 0 3 1
+  xinput set-ptr-feedback "ERGO M575 Mouse" "$threshold" "$accel" "$denom"
   # printf "updated feedback: \n%s" "$(xinput get-feedbacks 'ERGO M575 Mouse')"
 }
 
@@ -89,11 +91,11 @@ set_ergo_mouse_speed() {
   # CURR_SPEED="$(xinput list-props 'ERGO M575 Mouse' | grep -ioP '(?<=Accel Speed \(\d\d\d\)\:\s).?\d+.?\d*')"
   SPEED_ADJ=0.1
   DEFAULT_SPEED=1.0
-  SPEED=$DEFAULT_SPEED
+  SPEED="$DEFAULT_SPEED"
 
   # if no argument was given, set speed to default defined above
   if [ $# = 0 ]; then
-    printf "resetting mouse speed to %s \n" "$DEFAULT_SPEED"
+    printf "using mouse speed default: %s \n" "$DEFAULT_SPEED"
   fi
 
   # $opt will hold the current option
@@ -108,17 +110,17 @@ set_ergo_mouse_speed() {
       ;;
     f)
       # SET MOUSE SPEED TO $MAX_MOUSE_SPEED
-      printf "setting mouse to max speed = $MAX_MOUSE_SPEED \n"
+      printf "setting mouse to max speed = %s \n" "$MAX_MOUSE_SPEED"
       ;;
     i)
       # increment mouse speed by ...
-      printf "increasing mouse speed by $SPEED_ADJ \n"
+      printf "increasing mouse speed by %s \n" "$SPEED_ADJ"
       printf "option incomplete, come back later. \n"
       return 1
       ;;
     d)
       # decrement mouse speed by ...
-      printf "decreasing mouse speed by $SPEED_ADJ \n"
+      printf "decreasing mouse speed by %s \n" "$SPEED_ADJ"
       printf "option incomplete, come back later. \n"
       return 1
       ;;
@@ -160,7 +162,8 @@ set_ergo_mouse_speed() {
   # libinput Accel Custom Scroll Points (358):	<no items>
   # libinput Accel Custom Scroll Step (359):	0.000000
 
-  local MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575')"
+  local MOUSE_NAME
+  MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575')"
   # local MOUSE_ID="$(xinput list --id-only $MOUSE_NAME)"
 
   # printf "MOUSE_NAME: %s \n\n" "$MOUSE_NAME"

@@ -1,9 +1,8 @@
 #!/bin/sh
 
-mouseFast() {
+mouse_fast() {
   # shellcheck source=../funs/mouseSpeed.sh
   . "$ZSH_CUSTOM/funs/mouseSpeed.sh"
-  # . "$ZSH_CUSTOM/funs/mouseSpeed.zsh"
 
   # printf "\nCURRENT ergo speed: %s \n" "$(get_ergo_speed)"
 
@@ -15,14 +14,11 @@ mouseFast() {
 
   # printf "\ndone\n\nsetting feedback...\n\n"
 
-  set_ergo_feedback
+  set_ergo_feedback "$2" "$3" "$4"
 
   # printf "\n\ndone\n"
 
   # printf "NEW ergo settings: \n\n"
   printf "SPEED: %s \n" "$(get_ergo_speed)"
   printf "FEEDBACK: \n%s \n" "$(get_ergo_feedbacks)"
-
-  return 0
-  ;
 }

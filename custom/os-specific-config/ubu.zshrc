@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # PATH env var
 export PATH="$PATH:$HOME/.local"
 export PATH="$PATH:/snap/bin:/snap:/opt"
@@ -30,7 +32,7 @@ source "$ZSH_CUSTOM/funs/setFastMouse.sh"
 source "$ZSH_CUSTOM/funs/brightness.sh"
 
 # Aliases
-source $ALIASES_DIR/mint_aliases.zsh
+source "$ALIASES_DIR/mint_aliases.zsh"
 
 # anaconda
 # # >>> conda initialize >>>
