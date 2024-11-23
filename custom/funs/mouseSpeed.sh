@@ -54,14 +54,12 @@ set_ergo_feedback() {
   local accel
   local denom
   local threshold
-  accel="$1"
-  denom="$2"
-  threshold="$3"
 
-  # if no argument was given, set speed to default defined above
-  if [ $# = 0 ]; then
-    printf "resetting mouse speed to %s \n" "$DEFAULT_SPEED"
-  else
+  # if no argument was given, set speed to defaults defined after ':-'
+  accel="${1:-3}"
+  denom="${2:-1}"
+  threshold="${3:-0}"
+
     if [ -n "$accel" ]; then
       accel=3
     fi
@@ -71,8 +69,8 @@ set_ergo_feedback() {
     if [ -n "$threshold" ]; then
       threshold=0
     fi
-    printf "setting mouse speed to threshold=%s accel=%s denom=%s \n" "$threshold" "$accel" "$denom"
-  fi
+
+    # printf "setting ptr feedback to threshold=%s accel=%s denom=%s \n" "$threshold" "$accel" "$denom"
 
   # arguments are: <threshold> <num> <denom>
   # default is 2 1 4
@@ -106,10 +104,11 @@ set_ergo_mouse_speed() {
     s)
       # set mouse speed to specified value\
       SPEED="$OPTARG"
-      printf "setting mouse speed to %s \n" "$SPEED"
+      # printf "setting mouse speed to %s \n" "$SPEED"
       ;;
     f)
       # SET MOUSE SPEED TO $MAX_MOUSE_SPEED
+      SPEED="$MAX_MOUSE_SPEED"
       printf "setting mouse to max speed = %s \n" "$MAX_MOUSE_SPEED"
       ;;
     i)
@@ -144,12 +143,13 @@ set_ergo_mouse_speed() {
       ;;
     esac
   done
+
   if [ "${OPTIND}" -gt 1 ]; then
     shift "$((OPTIND - 1))"
   fi
   # ((OPTIND >1)) && shift "$((OPTIND - 1))"
 
-  # Props
+  # Example of Props for Accel:
   # libinput Accel Speed (349):	-0.858065
   # libinput Accel Speed Default (350):	0.000000
   # libinput Accel Profiles Available (351):	1, 1, 1
@@ -164,7 +164,8 @@ set_ergo_mouse_speed() {
 
   local MOUSE_NAME
   MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575')"
-  # local MOUSE_ID="$(xinput list --id-only $MOUSE_NAME)"
+  # local MOUSE_ID
+  # MOUSE_ID="$(xinput list --id-only $MOUSE_NAME)"
 
   # printf "MOUSE_NAME: %s \n\n" "$MOUSE_NAME"
   # printf "MOUSE_ID: %s \n\n" "$MOUSE_ID"
@@ -174,7 +175,6 @@ set_ergo_mouse_speed() {
   else
     # printf "%s \n" "$MOUSE_NAME"
 
-    #
     xinput set-prop "$MOUSE_NAME" "libinput Accel Speed" "$SPEED"
   fi
 
