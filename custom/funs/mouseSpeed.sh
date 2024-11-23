@@ -106,7 +106,7 @@ set_ergo_mouse_speed() {
     s)
       # set mouse speed to specified value\
       SPEED="$OPTARG"
-      # printf "setting mouse speed to $SPEED \n"
+      printf "setting mouse speed to %s \n" "$SPEED"
       ;;
     f)
       # SET MOUSE SPEED TO $MAX_MOUSE_SPEED
