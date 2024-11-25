@@ -3,12 +3,10 @@
 # Customizations to .zshrc file
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin${PATH:+":$PATH"}
-export PATH="$HOME/bin:$HOME/.local/bin:/bin:/usr/local/bin:/usr/bin"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_CUSTOM/funs/$ZSH_CUSTOM/scripts"
 
-# Path to your oh-my-zsh installation.
-# export ZSH="$HOME/.oh-my-zsh"
-
-# source "$ZSH/oh-my-zsh.sh"
+# load environment variables
+source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -80,132 +78,9 @@ COMPLETION_WAITING_DOTS="true"
 # plugins=(docker common-aliases command-not-found colored-man-pages)
 plugins=(common-aliases command-not-found colored-man-pages)
 
-# source "$ZSH/oh-my-zsh.sh"
-
-# # User configuration
-
-# # export MANPATH="/usr/local/man:$MANPATH"
-
-# # You may need to manually set your language environment
-# # export LANG=en_US.UTF-8
-
-# # Preferred editor for local and remote sessions
-# # if [[ -n $SSH_CONNECTION ]]; then
-# #   export EDITOR='vim'
-# # else
-# #   export EDITOR='mvim'
-# # fi
-# # if [[ -n $SSH_CONNECTION ]]; then
-# #   export EDITOR='nano'
-# # else
-# #   export EDITOR='nano'
-# # fi
-# export EDITOR='nano'
-
-# # Compilation flags
-# # export ARCHFLAGS="-arch x86_64"
-
-# # Set personal aliases, overriding those provided by oh-my-zsh libs,
-# # plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# # users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# # For a full list of active aliases, run `alias`.
-# #
-# # Example aliases
-# # alias zshconfig="mate ~/.zshrc"
-# # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
-# export PATH="$PATH:~/dart-sass"
-
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/adombrowski/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-# if [ $? -eq 0 ]; then
-#   eval "$__conda_setup"
-# else
-#   if [ -f "/home/adombrowski/anaconda3/etc/profile.d/conda.sh" ]; then
-#     . "/home/adombrowski/anaconda3/etc/profile.d/conda.sh"
-#   else
-#     export PATH="$PATH:/home/adombrowski/anaconda3/bin"
-#   fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<
-
-# # Also gets set in ~/.condarc
-# # conda config --set auto_activate_base True
-# conda config --set auto_activate_base False
-
-# export PATH="$PATH:/usr/lib/wsl/lib"
-
-# # export PATH="$PATH:$(yarn global bin)"
-
-# # make less more friendly for non-text input files, see lesspipe(1)
-# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# export PATH="$PATH:/home/adombrowski/.local/bin"
-
-# export PATH="$PATH:~/.console-ninja/.bin"
-
-# # Add Go to Path
-# export PATH="$PATH:/usr/local/go/bin"
-
-# # pnpm
-# export PNPM_HOME="/home/adombrowski/.local/share/pnpm"
-# case ":$PATH:" in
-# *":$PNPM_HOME:"*) ;;
-# *) export PATH="$PATH:$PNPM_HOME" ;;
-# esac
-# # pnpm end
-
-# export DEFAULT_USERNAME="adombrowski"
-# export DEFAULT_USER="adombrowski"
-
-# # watchman bin
-# export PATH=$PATH:~/watchman-v2024.04.08.00-linux/bin
-
-# export PATH="$PATH:~/jdk-22.0.1/bin"
-
-# export ANDROID_HOME="/mnt/a/akdfl/android_studio/android-sdk"
-# export PATH="$PATH:$ANDROID_HOME/emulator"
-# export PATH="$PATH:$ANDROID_HOME/platform-tools"
-
-# PATH=$PATH:~/.console-ninja/.bin
-
-# # put TABSIZE=0 in your environment, to tell `ls` to align using spaces, not tabs.
-# export TABSIZE=0
-
-# # asus windows laptop paths from WSL
-# export DRIVE_A='/mnt/a'
-# export DRIVE_C='/mnt/c'
-# export AKDFL="${DRIVE_A}/akdfl"
-# export PICS="${AKDFL}/A_Pictures"
-# export ANTHONY_PICS="${PICS}/anthony"
-# export KAPTCHA_ME_PICS="${PICS}/kaptcha-me"
-# export STOCK_PICS="${PICS}/stock-imgs"
-# export ICONS_PICS="${STOCK_PICS}/icons"
-# export CAR_PICS="${PICS}/car"
-# export VIDS="${AKDFL}/A_Videos"
-# export DOCS="${AKDFL}/A_Documents"
-# export A_MUSIC="${AKDFL}/A_Music"
-# export DOWNLOADS="${AKDFL}/A_Downloads"
-# export A_AUDIO="${AKDFL}/audio"
-# export ADOMBROWSKI="${DRIVE_C}/Users/adombrowski"
-# export WSL_PATHS=("DRIVE_A" "DRIVE_C" "AKDFL" "PICS" "ANTHONY_PICS" "KAPTCHA_ME_PICS" "STOCK_PICS"
-# "ICONS_PICS" "CAR_PICS" "VIDS" "DOCS" "A_MUSIC" "DOWNLOADS" "A_AUDIO" "ADOMBROWSKI")
-
-
+# NO LONGER NEED B/C ADDED TO PATH ENV VAR
 # source functions
-source "$HOME/.oh-my-zsh/custom/funs/kmNameRND.zsh"
-
-# rather than adding stuff to the .zshrc file in the home dir which isnt being syncd with git
-# this file is read by oh-my-zsh.sh
-# can add what you would've put into ~/.zshrc like path variables
-
-export PATH="$PATH:$HOME/.local/bin:/sbin:/usr/sbin"
+# source scripts
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -284,34 +159,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# Java
-# export JAVA_HOME="/usr/java/jdk-22-oracle-x64"
-
-export DEFAULT_USERNAME="akdombrowski"
-export DEFAULT_USER="akdombrowski"
-
-# watchman bin
-# export PATH="$PATH:$HOME/watchman-v2024.04.08.00-linux/bin"
-
-# export PATH="~/jdk-22.0.1/bin:$PATH"
-
-# export ANDROID_HOME="/mnt/a/akdfl/android_studio/android-sdk"
-# export PATH="$PATH:$ANDROID_HOME/emulator"
-# export PATH="$PATH:$ANDROID_HOME/platform-tools"
-
 export PATH="$PATH:$HOME/.console-ninja/.bin"
-
-# Add Go to Path
-# export PATH="$PATH:/usr/local/go/bin"
-
-# put TABSIZE=0 in your environment, to tell `ls` to align using spaces, not tabs.
-export TABSIZE=0
-
-export OS="$(uname -sro)"
-export ALIASES_DIR="$ZSH/custom/aliases"
-export OS_SPECIFIC_CONFIG_DIR="$ZSH/custom/os-specific-config"
-
-export ZSH_CUSTOM
 
 # shared config
 source $ALIASES_DIR/common_aliases.zsh
@@ -320,6 +168,9 @@ source $ALIASES_DIR/common_aliases.zsh
 # adds things like aliases and paths specific to the platform
 if [[ ${OS} =~ "[lL]inux" ]]; then
   source "$OS_SPECIFIC_CONFIG_DIR/ubu.zshrc"
+  source "$ENV_VARS_DIR/mint_vars.zsh"
+
 else
   source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zshrc"
+  source "$ENV_VARS_DIR/wsl_vars.zsh"
 fi

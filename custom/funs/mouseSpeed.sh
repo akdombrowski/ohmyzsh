@@ -88,12 +88,12 @@ set_ergo_mouse_speed() {
   # local CURR_SPEED
   # CURR_SPEED="$(xinput list-props 'ERGO M575 Mouse' | grep -ioP '(?<=Accel Speed \(\d\d\d\)\:\s).?\d+.?\d*')"
   SPEED_ADJ=0.1
-  DEFAULT_SPEED=1.0
+  DEFAULT_SPEED=0.50
   SPEED="$DEFAULT_SPEED"
 
   # if no argument was given, set speed to default defined above
   if [ $# = 0 ]; then
-    printf "using mouse speed default: %s \n" "$DEFAULT_SPEED"
+    printf "no args given, so using mouse speed default: %s \n" "$DEFAULT_SPEED"
   fi
 
   # $opt will hold the current option
@@ -178,4 +178,5 @@ set_ergo_mouse_speed() {
     xinput set-prop "$MOUSE_NAME" "libinput Accel Speed" "$SPEED"
   fi
 
+  get_ergo_speed
 }

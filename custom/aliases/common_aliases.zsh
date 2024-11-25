@@ -26,9 +26,12 @@ alias magickStream="stream"
 # alias ink="~/inkscape/squashfs-root/AppRun"
 # alias inkview="ink inkview"
 
+alias yarndk='yarn dlx @yarnpkg/sdks vscode'
 alias yarnOn="corepack enable && yarn set version stable --only-if-needed"
 alias ncu="yarn dlx npm-check-updates"
 alias npx_ncu="npx npm-check-updates"
+
+alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 
 alias eless='ls -A -sS -p -h -gG --color --group-directories-first'
 alias ls='ls --color --group-directories-first -gGohsA -p'
@@ -67,15 +70,15 @@ alias llsR='ll -R'
 alias llst='ll -t'
 alias lsShort="alias | grep \"ls\""
 
-alias copyToClip="xclip -selection clipboard -f -r && echo "
+alias clip="xclip -selection clipboard -f -r && echo "
+alias copyToClip="echo \"renamed to 'clip'\" | clip"
 alias fromClip="xclip -o -selection clipboard && echo "
 
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 
-alias yarndk='yarn dlx @yarnpkg/sdks vscode'
 
-alias python3='python3.13'
-alias python='python3.13'
+# alias python3='python3.13'
+alias python="$(which python3) "
 
 alias funs="echo 'renameFilesReplaceDir() \n\
 rnd() \n\
