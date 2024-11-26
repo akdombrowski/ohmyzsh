@@ -28,6 +28,9 @@ alias APP_LOCATIONS='printf "%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n"
 
 alias brightest="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_bright-midday -V all"
 alias brighter="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_brighter -V all"
+alias bright="nvidia-settings "
 alias brights='ls "$HOME"/Cinnamon/.nvidia-settings-rc_*'
+alias nv_bright="echo 'renamed alias to \'bright\''"
+alias nv_bright_configs="echo 'renamed alias to \'brights\''"
 
 alias phast="phast.sh"
