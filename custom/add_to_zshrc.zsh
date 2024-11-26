@@ -3,10 +3,24 @@
 # Customizations to .zshrc file
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin${PATH:+":$PATH"}
-export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_CUSTOM/funs/$ZSH_CUSTOM/scripts"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_CUSTOM/funs:$ZSH_CUSTOM/scripts"
 
 # load environment variables
 source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
+
+# shared config
+source $ALIASES_DIR/common_aliases.zsh
+
+
+
+# platform-specific
+# adds things like aliases and paths specific to the platform
+if [[ ${OS} =~ "[lL]inux" ]]; then
+  source "$OS_SPECIFIC_CONFIG_DIR/ubu.zshrc"
+
+else
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zshrc"
+fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -160,17 +174,3 @@ esac
 # pnpm end
 
 export PATH="$PATH:$HOME/.console-ninja/.bin"
-
-# shared config
-source $ALIASES_DIR/common_aliases.zsh
-
-# platform-specific
-# adds things like aliases and paths specific to the platform
-if [[ ${OS} =~ "[lL]inux" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/ubu.zshrc"
-  source "$ENV_VARS_DIR/mint_vars.zsh"
-
-else
-  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zshrc"
-  source "$ENV_VARS_DIR/wsl_vars.zsh"
-fi

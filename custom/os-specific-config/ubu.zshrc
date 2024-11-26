@@ -1,12 +1,10 @@
 #!/bin/zsh
 
-
-# functions
-source "$ZSH_CUSTOM/funs/setFastMouse.sh"
-source "$ZSH_CUSTOM/funs/brightness.sh"
-
 # Aliases
 source "$ALIASES_DIR/mint_aliases.zsh"
+
+# Environment Variables
+source "$ENV_VARS_DIR/mint_vars.zsh"
 
 # anaconda
 # # >>> conda initialize >>>

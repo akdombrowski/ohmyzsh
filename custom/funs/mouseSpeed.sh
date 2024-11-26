@@ -103,7 +103,7 @@ set_ergo_mouse_speed() {
     case $opt in
     s)
       # set mouse speed to specified value\
-      SPEED="$OPTARG"
+      SPEED="${OPTARG:-${DEFAULT_SPEED}}"
       # printf "setting mouse speed to %s \n" "$SPEED"
       ;;
     f)

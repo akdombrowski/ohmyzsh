@@ -23,10 +23,11 @@ alias setErgoFeed="xinput set-ptr-feedback \"ERGO M575 Mouse\" "
 alias setErgoSpeed="xinput set-prop \"ERGO M575 Mouse\" \"libinput Accel Speed\" "
 # script which sets both ergo accel speed and feedback
 alias setErgoFast=". $SET_FAST_MOUSE_SCRIPT 1"
-alias phast=". $SET_FAST_MOUSE_SCRIPT 1"
 
 alias APP_LOCATIONS='printf "%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n" "$FLATPAK_APPS $LOCAL_SNAP_APPS $ROOT_SNAP_APPS $LOCAL_DESKTOP_FILES $LOCAL_APP_FILES $LOCAL_APP_CONFIG $OTHER_APPS $USR_BIN $USR_LIB $USR_SHARE"'
 
 alias brightest="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_bright-midday -V all"
 alias brighter="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_brighter -V all"
-alias brightnessConfigs='ls "$HOME"/Cinnamon/.nvidia-settings*'
+alias brights='ls "$HOME"/Cinnamon/.nvidia-settings-rc_*'
+
+alias phast="phast.sh"

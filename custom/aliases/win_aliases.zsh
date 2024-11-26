@@ -28,26 +28,6 @@ alias yarnOn="corepack enable && yarn set version stable --only-if-needed"
 alias ncu="yarn dlx npm-check-updates"
 alias npx_ncu="npx npm-check-updates"
 
-alias eless='ls -A -sS -p -h -gG --color'
-alias ls='ls --color --group-directories-first'
-alias lsplain='ls --color=never'
-alias la1='ls -A1'
-alias la='ls -A'
-alias lacomma='ls -Am'
-alias lg='ls -gh'
-alias lga='ls -gAh'
-alias ldot='ls -gd .* '
-alias lsa='ls -gah'
-alias lsrecurs='ls -gARh'
-alias lt='ls -gth'
-alias ll='ls -l'
-alias ll='ls -lh'
-alias lla='ls -lAh'
-alias lldot='ls -ld .*'
-alias llsa='ls -lah'
-alias llsrecurs='ls -lARh'
-alias llt='ls -lth'
-
 alias subl='/mnt/a/Program\ Files/Sublime\ Text/subl.exe'
 alias code='/mnt/a/Program\ Files/Microsoft\ VS\ Code/Code.exe'
 
