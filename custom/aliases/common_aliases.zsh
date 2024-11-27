@@ -34,7 +34,7 @@ alias npx_ncu="npx npm-check-updates"
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 
 alias eless='ls -A -sS -p -h -gG --color --group-directories-first'
-alias ls='ls --color --group-directories-first -gGohsA -p'
+alias ls='ls --color --group-directories-first -hA -p'
 # format when...
 alias lsF='ls -F '
 #
@@ -64,7 +64,8 @@ alias lsdot='ls -d .* '
 alias lsR='ls -R'
 alias lsplain='ls --color=never'
 # detailed
-alias lls='ls -log'
+alias lgs='ls -og'
+alias lls='ls -l'
 alias llsdots='ll -d .*'
 alias llsR='ll -R'
 alias llst='ll -t'

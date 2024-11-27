@@ -9,8 +9,10 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_
 source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
 
 # shared config
-source $ALIASES_DIR/common_aliases.zsh
+source "$ALIASES_DIR"/common_aliases.zsh
 
+# all functions
+source "$ZSH_CUSTOM"/funs/*
 
 
 # platform-specific

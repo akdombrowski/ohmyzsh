@@ -30,7 +30,7 @@ alias brightest="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_
 alias brighter="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_brighter -V all"
 alias bright="nvidia-settings "
 alias brights='ls "$HOME"/Cinnamon/.nvidia-settings-rc_*'
-alias nv_bright="echo 'renamed alias to \'bright\''"
-alias nv_bright_configs="echo 'renamed alias to \'brights\''"
+alias nv_bright="echo 'renamed alias to \"nvb\"'"
+alias nv_bright_configs="echo 'renamed alias to \"nvbs\"'"
 
 alias phast="phast.sh"
