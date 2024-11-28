@@ -23,3 +23,8 @@ export OTHER_APPS='/opt'
 export USR_BIN='/usr/bin'
 export USR_LIB='/usr/lib'
 export USR_SHARE='/usr/share'
+
+# location of backup and test config-related stuff for linux mint
+export HOME_CINNAMON_DIR="$HOME/Cinnamon"
+# nvidia-settings config files
+export NVB_FILES="$HOME_CINNAMON_DIR/nvidia-settings"

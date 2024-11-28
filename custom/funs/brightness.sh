@@ -1,13 +1,15 @@
 #!/bin/sh
 
-export HOME_CINNAMON_DIR="$HOME/Cinnamon"
+nvbz() {
+  find "$NVB_FILES" -P ".nvidia-settings" printf "%f"
+}
 
 nvbs() {
-  ls "$HOME_CINNAMON_DIR"/.nvidia-settings*
+  ls "$NVB_FILES"/.nvidia-settings*
 }
 
 nvb() {
   local config_file
-  config_file="$HOME_CINNAMON_DIR/.nvidia-settings-rc${1:+_$1}"
+  config_file="$NVB_FILES/.nvidia-settings-rc${1:+_$1}"
   nvidia-settings -l --config="$config_file" -V "all"
 }

@@ -4,8 +4,8 @@ alias os="echo $(uname -sro)"
 
 alias whichAlias="echo mint_aliases"
 
-alias whichFileManager="echo $(xdg-mime query default inode/directory)"
-alias setDefaultFileMgr="echo $(xdg-mime default org.kde.dolphin.desktop inode/directory)"
+alias whichFileMgr="echo $(xdg-mime query default inode/directory)"
+alias setDefFileMgr="echo $(xdg-mime default org.kde.dolphin.desktop inode/directory)"
 
 alias subl="/opt/sublime_text/sublime_text --launch-or-new-window "
 # sublime_text [arguments] -               Edit stdin
@@ -26,10 +26,10 @@ alias setErgoFast=". $SET_FAST_MOUSE_SCRIPT 1"
 
 alias APP_LOCATIONS='printf "%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n%s \n" "$FLATPAK_APPS $LOCAL_SNAP_APPS $ROOT_SNAP_APPS $LOCAL_DESKTOP_FILES $LOCAL_APP_FILES $LOCAL_APP_CONFIG $OTHER_APPS $USR_BIN $USR_LIB $USR_SHARE"'
 
-alias brightest="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_bright-midday -V all"
-alias brighter="nvidia-settings -l --config=$HOME/Cinnamon/.nvidia-settings-rc_brighter -V all"
+alias brightest="nvidia-settings -l --config=$NVB_FILES/.nvidia-settings-rc_bright-midday -V all"
+alias brighter="nvidia-settings -l --config=$NVB_FILES/.nvidia-settings-rc_brighter -V all"
 alias bright="nvidia-settings "
-alias brights='ls "$HOME"/Cinnamon/.nvidia-settings-rc_*'
+alias brights='ls "$NVB_FILES"/.nvidia-settings-rc_*'
 alias nv_bright="echo 'renamed alias to \"nvb\"'"
 alias nv_bright_configs="echo 'renamed alias to \"nvbs\"'"
 
