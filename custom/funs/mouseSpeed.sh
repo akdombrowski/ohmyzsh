@@ -40,6 +40,27 @@ get_ergo_feedbacks() {
   echo "$feedback" | grep -i 'is'
 }
 
+get_ergo() {
+  shopt -s extglob
+
+  # shopt | grep extglob
+
+  SPEED="$(get_ergo_speed)"
+  FDBK="$(get_ergo_feedbacks)"
+
+  accel=$(echo "$FDBK" | grep accelNum)
+  accel="${accel##+([![:digit:]])}"
+  denom=$(echo "$FDBK" | grep Denom)
+  denom="${denom##+([![:digit:]])}"
+  thresh=$(echo "$FDBK" | grep thresh)
+  thresh="${thresh##+([![:digit:]])}"
+
+  printf "speed: %s \naccelNum: %s \naccelDenom: %s \nthreshold: %s \n" "$SPEED" "$accel" "$denom" "$thresh"
+
+  # ${parameter//pattern/string}
+  notify-send -u normal -t 2500 "getPhast" "speed: $SPEED \naccelNum: $accel \naccelDenom: $denom \nthreshold: $thresh"
+}
+
 set_ergo_feedback() {
   # set-ptr-feedback device threshold num denom
   #  Change the pointer acceleration (or feed‐
@@ -60,17 +81,17 @@ set_ergo_feedback() {
   denom="${2:-1}"
   threshold="${3:-0}"
 
-    if [ -n "$accel" ]; then
-      accel=3
-    fi
-    if [ -n "$denom" ]; then
-      denom=1
-    fi
-    if [ -n "$threshold" ]; then
-      threshold=0
-    fi
+  if [ -n "$accel" ]; then
+    accel=3
+  fi
+  if [ -n "$denom" ]; then
+    denom=1
+  fi
+  if [ -n "$threshold" ]; then
+    threshold=0
+  fi
 
-    # printf "setting ptr feedback to threshold=%s accel=%s denom=%s \n" "$threshold" "$accel" "$denom"
+  # printf "setting ptr feedback to threshold=%s accel=%s denom=%s \n" "$threshold" "$accel" "$denom"
 
   # arguments are: <threshold> <num> <denom>
   # default is 2 1 4

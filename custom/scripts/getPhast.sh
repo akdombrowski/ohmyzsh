@@ -1,8 +1,10 @@
 #!/bin/bash
 
 touch "$HOME"/phast.err
-echo "phast.sh--$(date \"+%m/%d/%y %H:%M:%S\") - " >> "$HOME"/phast.err
+# echo "getPhast.sh--$(date \"+%m/%d/%y%T%l:%M:%S\") - " >> "$HOME"/phast.err
+echo "getPhast.sh--$(date +%x%T%r) - " >> "$HOME"/phast.err
 exec 2>>"$HOME"/phast.err
+
 
 # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
 . "$ZSH_CUSTOM/funs/mouseSpeed.sh"
@@ -26,4 +28,4 @@ set_ergo_feedback -s "$2" "$3" "$4"
 # printf "SPEED: %s \n" "$(get_ergo_speed)"
 # printf "FEEDBACK: \n%s \n" "$(get_ergo_feedbacks)"
 
-notify-send -u critical -t 2500 "phast" "mouse connected and phast.sh run"
+get_ergo
