@@ -26,4 +26,6 @@ set_ergo_feedback -s "$2" "$3" "$4"
 # printf "SPEED: %s \n" "$(get_ergo_speed)"
 # printf "FEEDBACK: \n%s \n" "$(get_ergo_feedbacks)"
 
-notify-send -u critical -t 2500 "phast" "mouse connected and phast.sh run"
+ERGO=($(get_ergo))
+
+create_notification
