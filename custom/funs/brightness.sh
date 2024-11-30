@@ -8,8 +8,14 @@ nvbs() {
   ls "$NVB_FILES"/.nvidia-settings*
 }
 
+nvbl() {
+  local config_file
+  config_file="$NVB_FILES/.nvidia-settings-rc${1:+_$1}"
+  nvidia-settings -l --config="$config_file"
+}
+
 nvb() {
   local config_file
   config_file="$NVB_FILES/.nvidia-settings-rc${1:+_$1}"
-  nvidia-settings -l --config="$config_file" -V "all"
+  nvidia-settings --config="$config_file"
 }
