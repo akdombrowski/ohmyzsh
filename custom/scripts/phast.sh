@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 touch "$HOME"/phast.err
-echo "phast.sh--$(date \"+%m/%d/%y %H:%M:%S\") - " >> "$HOME"/phast.err
+echo "phast.sh--$(date +%m/%d/%y_%H:%M:%S) - " >> "$HOME"/phast.err
 exec 2>>"$HOME"/phast.err
 
 # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
@@ -25,7 +25,11 @@ set_ergo_feedback -s "$2" "$3" "$4"
 # # printf "NEW ergo settings: \n\n"
 # printf "SPEED: %s \n" "$(get_ergo_speed)"
 # printf "FEEDBACK: \n%s \n" "$(get_ergo_feedbacks)"
-
+declare -a ERGO
 ERGO=($(get_ergo))
 
-create_notification
+printf "ERGO # args: %d" ${#ERGO[@]}
+
+# intentionally left arg unquoted to avoid concatenating into a single string
+# shellcheck disable=SC2068
+create_notification ${ERGO[@]}

@@ -1,10 +1,12 @@
+#!/usr/bin/env bash
+
 kmNameRND() {
   # $opt will hold the current option
   local opt
   local xtn
   local prefix
 
-  while getopts xb:dh opt; do
+  while getopts xbp:dh opt; do
     # loop continues till options finished
     # see which pattern $opt matches...
     case $opt in
@@ -20,6 +22,10 @@ kmNameRND() {
       dryrun=1
       printf "dry run only...\n\n"
       ;;
+    b)
+    printf "not yet implemented \n"
+    return 0
+    ;;
     h)
       print "makes a copy of each of the files in current dir with a rnd UUID attached to the filename"
       print "available flags:"

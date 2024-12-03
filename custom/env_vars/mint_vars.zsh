@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 export PATH="$PATH:/snap/bin:/snap:/opt"
 

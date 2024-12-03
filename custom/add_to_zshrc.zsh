@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Customizations to .zshrc file
 # If you come from bash you might have to change your $PATH.

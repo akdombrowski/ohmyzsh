@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 touch "$HOME"/phast.err
 # echo "getPhast.sh--$(date \"+%m/%d/%y%T%l:%M:%S\") - " >> "$HOME"/phast.err

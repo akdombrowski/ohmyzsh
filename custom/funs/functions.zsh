@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 #
 # ---HELPFUL BASH COMMANDS---

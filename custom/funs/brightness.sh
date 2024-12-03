@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 nvbz() {
   find "$NVB_FILES" -P ".nvidia-settings" printf "%f"

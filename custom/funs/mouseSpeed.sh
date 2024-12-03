@@ -1,4 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# helpful bash tips
+#
+# "$*": concatenate arguments into a single string
+# "$@": array of arguments
+# "$#": number of arguments
+# "$0": location of fn call
+# "$1": first arg given
+#
 
 # from xset man page
 #  By default the pointer (the on-screen  representation  of  the
@@ -42,7 +51,7 @@ get_ergo_feedbacks() {
 
 get_ergo() {
   shopt -s extglob
-  shopt | grep extglob
+  # shopt | grep extglob
   # zsh uses `setopt`
   # BUT, zsh also has different parameter expansion rules
   # setopt extendedglob
@@ -50,7 +59,6 @@ get_ergo() {
 
   SPEED="$(get_ergo_speed)"
   FDBK="$(get_ergo_feedbacks)"
-
 
   accel=$(echo "$FDBK" | grep accelNum)
   accel="${accel##+([![:digit:]])}"
@@ -61,7 +69,13 @@ get_ergo() {
 
   # printf "speed: %s \naccelNum: %s \naccelDenom: %s \nthreshold: %s \n" "$SPEED" "$accel" "$denom"
   # "$thresh"
-  printf "%s\n%s\n%s\n%s\n" "$SPEED" "$accel" "$denom" "$thresh"
+  declare -a arr
+  arr=("$SPEED" "$accel" "$denom" "$thresh")
+  # printf "%s\n%s\n%s\n%s\n" "$SPEED" "$accel" "$denom" "$thresh"
+
+  # intentionally left arg unquoted to avoid returning as a single string
+  # shellcheck disable=SC2068
+  echo "${arr[@]}"
 }
 
 print_ergo_nice() {
@@ -73,34 +87,55 @@ print_ergo_nice() {
 }
 
 create_notification() {
-  # shopt -s extglob
-  setopt extendedglob
+  shopt -s extglob
+  #  setopt extendedglob
 
   # if no argument was given, set speed to default defined above
   if [ $# = 0 ]; then
     printf "no args given\n"
-    return 1;
+    return 1
   fi
 
-  INPUT="$1"
+  INPUT="$*"
+  INPUT_COUNT="$#"
+  INPUT_ARR="$1"
+
+  # "$*": concatenate arguments into a single string
+  # "$@": array of arguments
+  # "$#": number of arguments
+  # "$0": location of fn call
+  # "$1": first arg given
+  # printf "\$*: %s \n" "$*"
+  # printf "\$@: %s \n" "$@"
+  # printf "\$#: %s \n" "$#"
+  # printf "\$0: %s \n" "$0"
+  # printf "\$1: %s \n" "$1"
+  # printf "\$2: %s \n" "$2"
+  # printf "\$3: %s \n" "$3"
 
   if [[ "$(declare -p INPUT)" =~ "declare -a" ]]; then
-    echo array
-    SPEED="${INPUT[0]}"
-    accel="${INPUT[1]}"
-    denom="${INPUT[2]}"
-    thresh="${INPUT[3]}"
-
+    # echo array
+    SPEED="${INPUT_ARR[0]}"
+    ACCEL="${INPUT_ARR[1]}"
+    DENOM="${INPUT_ARR[2]}"
+    THRESH="${INPUT_ARR[3]}"
+  elif [ "$INPUT_COUNT" == 4 ]; then
+    SPEED="$1"
+    ACCEL="$2"
+    DENOM="$3"
+    THRESH="$4"
   else
-    echo no array
-    accel="$2"
-    denom="$3"
-    thresh="$4"
+    echo "missing values"
+    return 1
   fi
 
-  printf "speed: %s \naccel: %s \ndenom: %s \nthresh: %s\n" "$SPEED" "$accel" "$denom" "$thresh"
+  printf "speed: %s \naccel: %s \ndenom: %s \nthresh: %s\n" "$SPEED" "$ACCEL" "$DENOM" "$THRESH"
   # ${parameter//pattern/string}
-  # notify-send -u normal -t 2500 "getPhast" "speed: $SPEED \naccelNum: $accel \naccelDenom: $denom \nthreshold: $thresh"
+  # levels: low, normal, critical (will ignore time limit)
+  URGENCY="normal"
+  DUR_MILLIS=2500
+  ICON="$HOME/Pictures/icons/Speedy_Gonzales.png"
+  notify-send -u "$URGENCY" -t "$DUR_MILLIS" -i "$ICON" "getPhast" "speed: $SPEED \naccel: $ACCEL \naccelDenom: $DENOM \nthreshold: $THRESH"
 }
 
 set_ergo_feedback() {

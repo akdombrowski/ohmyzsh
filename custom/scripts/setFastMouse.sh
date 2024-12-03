@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
 . /home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
@@ -14,7 +14,7 @@ set_ergo_mouse_speed -s "$1"
 
 # printf "\ndone\n\nsetting feedback...\n\n"
 
-set_ergo_feedback
+set_ergo_feedback "$2" "$3" "$4" "$5"
 
 # printf "\n\ndone\n"
 
