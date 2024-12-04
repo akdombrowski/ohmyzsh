@@ -70,7 +70,7 @@ get_ergo() {
   # printf "speed: %s \naccelNum: %s \naccelDenom: %s \nthreshold: %s \n" "$SPEED" "$accel" "$denom"
   # "$thresh"
   declare -a arr
-  arr=("$SPEED" "$accel" "$denom" "$thresh")
+  arr=("$SPEED" "$thresh" "$accel" "$denom")
   # printf "%s\n%s\n%s\n%s\n" "$SPEED" "$accel" "$denom" "$thresh"
 
   # intentionally left arg unquoted to avoid returning as a single string
@@ -116,14 +116,14 @@ create_notification() {
   if [[ "$(declare -p INPUT)" =~ "declare -a" ]]; then
     # echo array
     SPEED="${INPUT_ARR[0]}"
-    ACCEL="${INPUT_ARR[1]}"
-    DENOM="${INPUT_ARR[2]}"
-    THRESH="${INPUT_ARR[3]}"
+    THRESH="${INPUT_ARR[1]}"
+    ACCEL="${INPUT_ARR[2]}"
+    DENOM="${INPUT_ARR[3]}"
   elif [ "$INPUT_COUNT" == 4 ]; then
     SPEED="$1"
-    ACCEL="$2"
-    DENOM="$3"
-    THRESH="$4"
+    THRESH="$2"
+    ACCEL="$3"
+    DENOM="$4"
   else
     echo "missing values"
     return 1
@@ -135,7 +135,7 @@ create_notification() {
   URGENCY="normal"
   DUR_MILLIS=2500
   ICON="$HOME/Pictures/icons/Speedy_Gonzales.png"
-  notify-send -u "$URGENCY" -t "$DUR_MILLIS" -i "$ICON" "getPhast" "speed: $SPEED \naccel: $ACCEL \naccelDenom: $DENOM \nthreshold: $THRESH"
+  notify-send -u "$URGENCY" -t "$DUR_MILLIS" -i "$ICON" "getPhast" "speed: $SPEED \nthreshold: $THRESH \naccel: $ACCEL \naccelDenom: $DENOM"
 }
 
 set_ergo_feedback() {
@@ -149,23 +149,63 @@ set_ergo_feedback() {
   #  place, but complement the  pointer  feed‐
   #  back setting.
 
+  printf "\tmouseSpeed.sh--set_ergo_feedback: starting\n" >>"$HOME"/phast.err
+  exec 2>>"$HOME"/phast.err
+
   local accel
   local denom
   local threshold
+  # $opt will hold the current option
+  while getopts h opt; do
+    # loop continues till options finished
+    # see which pattern $opt matches...
+    case $opt in
+    h)
+      # printf "dry run only...\n\n"
+      printf "set_ergo_feedback [threshold acceleration denominator] \n"
+      printf "\nadjusts mouse feedback (acceleration) \n\n"
+      printf "  pass ALL of the following values (in order shown) \n"
+      printf "  or none of them for defaults: \n"
+      printf "\n\t\t  threshold acceleration denominator \n\n"
+      printf "*note that the following values are the defaults used if no values are given \n"
+      printf "\t  e.g., \n"
+      printf "\t\t  > set_ergo_feedback 0 3 1 \n"
+      printf "\t\t  sets... \n"
+      printf "\t\t  \t\t  threshold=0 \n"
+      printf "\t\t  \t\t  acceleration=3 \n"
+      printf "\t\t  \t\t  denominator=1 \n\n"
+      return 0
+      ;;
+      # matches a question mark
+      # (and nothing else, see text)
+    \?)
+      printf "Bad option, aborting \n".
+      return 1
+      ;;
+    *)
+      printf "Bad option, aborting \n".
+      return 1
+      ;;
+    esac
+  done
 
+  if [ "${OPTIND}" -gt 1 ]; then
+    shift "$((OPTIND - 1))"
+  fi
   # if no argument was given, set speed to defaults defined after ':-'
-  accel="${1:-3}"
-  denom="${2:-1}"
-  threshold="${3:-0}"
+  # i.e., 0 3 1
+  threshold="${1:-0}"
+  accel="${2:-3}"
+  denom="${3:-1}"
 
+  if [ -n "$threshold" ]; then
+    threshold=0
+  fi
   if [ -n "$accel" ]; then
     accel=3
   fi
   if [ -n "$denom" ]; then
     denom=1
-  fi
-  if [ -n "$threshold" ]; then
-    threshold=0
   fi
 
   # printf "setting ptr feedback to threshold=%s accel=%s denom=%s \n" "$threshold" "$accel" "$denom"
@@ -175,9 +215,14 @@ set_ergo_feedback() {
   # xinput set-ptr-feedback "ERGO M575 Mouse" 0 3 1
   xinput set-ptr-feedback "ERGO M575 Mouse" "$threshold" "$accel" "$denom"
   # printf "updated feedback: \n%s" "$(xinput get-feedbacks 'ERGO M575 Mouse')"
+
+  printf "\tmouseSpeed.sh--set_ergo_feedback: done\n" >>"$HOME"/phast.err
+
 }
 
 set_ergo_mouse_speed() {
+  printf "\tmouseSpeed.sh--set_ergo_mouse_speed: starting\n" >>"$HOME"/phast.err
+  exec 2>>"$HOME"/phast.err
 
   local opt
   local DEFAULT_SPEED
@@ -186,12 +231,14 @@ set_ergo_mouse_speed() {
   # local CURR_SPEED
   # CURR_SPEED="$(xinput list-props 'ERGO M575 Mouse' | grep -ioP '(?<=Accel Speed \(\d\d\d\)\:\s).?\d+.?\d*')"
   SPEED_ADJ=0.1
-  DEFAULT_SPEED=0.50
+  DEFAULT_SPEED=0.0
   SPEED="$DEFAULT_SPEED"
+  SPEED="${1:-$DEFAULT_SPEED}"
 
   # if no argument was given, set speed to default defined above
   if [ $# = 0 ]; then
     printf "no args given, so using mouse speed default: %s \n" "$DEFAULT_SPEED"
+    printf "\tmouseSpeed.sh: no args given, so using mouse speed default: %s \n" "$DEFAULT_SPEED" >>"$HOME"/phast.err
   fi
 
   # $opt will hold the current option
@@ -202,12 +249,13 @@ set_ergo_mouse_speed() {
     s)
       # set mouse speed to specified value\
       SPEED="${OPTARG:-${DEFAULT_SPEED}}"
+      printf "setting mouse to max speed = %s \n" "$MAX_MOUSE_SPEED"
+      printf "\tmouseSpeed.sh: setting mouse speed to %s \n" "$SPEED" >>"$HOME"/phast.err
       # printf "setting mouse speed to %s \n" "$SPEED"
       ;;
     f)
       # SET MOUSE SPEED TO $MAX_MOUSE_SPEED
       SPEED="$MAX_MOUSE_SPEED"
-      printf "setting mouse to max speed = %s \n" "$MAX_MOUSE_SPEED"
       ;;
     i)
       # increment mouse speed by ...
@@ -233,10 +281,12 @@ set_ergo_mouse_speed() {
       # (and nothing else, see text)
     \?)
       printf "Bad option, aborting \n".
+      printf "\tmouseSpeed.sh: Bad option, aborting \n" >>"$HOME"/phast.err
       return 1
       ;;
     *)
       printf "Bad option, aborting \n".
+      printf "\tmouseSpeed.sh: Bad option, aborting \n" >>"$HOME"/phast.err
       return 1
       ;;
     esac
@@ -261,7 +311,22 @@ set_ergo_mouse_speed() {
   # libinput Accel Custom Scroll Step (359):	0.000000
 
   local MOUSE_NAME
-  MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575')"
+  # the name is different when connected via proprietary usb device
+  #  'Logitech ERGO M575'
+  # with bluetooth,it's:
+  # "ERGO M575 Mouse"
+  # MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575')"
+  MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575 mouse')"
+  MOUSE_NAME_NUM_RESULTS="$(xinput list --name-only | grep -ic 'ergo m575')"
+
+  # echo "\$MOUSE_NAME_NUM_RESULTS = $MOUSE_NAME_NUM_RESULTS"
+
+  #  this is if using the broader search term
+  # if [ "$MOUSE_NAME_NUM_RESULTS" -gt 1 ]; then
+  #   printf "found multiple results for 'ergo m575'. selecting first result which may not be connected anymore. \n"
+  #   printf "\tmouseSpeed.sh: found %d results for 'ergo m575'. selecting first result which may not be connected anymore. \n%s \n" "$MOUSE_NAME_NUM_RESULTS" "$MOUSE_NAME" >>"$HOME"/phast.err
+  # fi
+  # MOUSE_NAME="$(xinput list --name-only | grep -im 1 'ergo m575')"
   # local MOUSE_ID
   # MOUSE_ID="$(xinput list --id-only $MOUSE_NAME)"
 
@@ -271,10 +336,14 @@ set_ergo_mouse_speed() {
   if [ -z "$MOUSE_NAME" ]; then
     printf "MOUSE_NAME var empty. Couldn't find the right mouse. \n"
   else
-    # printf "%s \n" "$MOUSE_NAME"
+    # printf "MOUSE_NAME = %s \n" "$MOUSE_NAME"
+    # printf "SPEED = %s \n" "$SPEED"
 
     xinput set-prop "$MOUSE_NAME" "libinput Accel Speed" "$SPEED"
   fi
 
-  get_ergo_speed
+  printf "\tmouseSpeed.sh--set_ergo_mouse_speed: done\n" >>"$HOME"/phast.err
+
+  # optionally print out new speed to ensure it updated
+  # get_ergo_speed
 }

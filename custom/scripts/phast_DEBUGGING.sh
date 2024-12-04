@@ -5,7 +5,7 @@ echo "phast.sh--$(date +%m/%d/%y_%H:%M:%S) - starting" >>"$HOME"/phast.err
 exec 2>>"$HOME"/phast.err
 
 # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
-. "${ZSH_CUSTOM:-/home/akdombrowski/.oh-my-zsh/custom}/funs/mouseSpeed.sh"
+. "$ZSH_CUSTOM/funs/mouseSpeed.sh"
 # . "$ZSH_CUSTOM/funs/mouseSpeed.sh"
 
 # printf "\nCURRENT ergo speed: %s \n" "$(get_ergo_speed)"
@@ -14,15 +14,15 @@ exec 2>>"$HOME"/phast.err
 
 # printf "\nsetting accel speed...\n\n"
 
-# printf "\$1=%s \$2=%s  \$3=%s  \$4=%s \n\n" "$1" "$2" "$3" "$4"
-set_ergo_mouse_speed "$@"
+printf "\$1=%s \$2=%s  \$3=%s  \$4=%s \n\n" "$1" "$2" "$3" "$4"
+set_ergo_mouse_speed -s "$1"
 
 # printf "\ndone\n\nsetting feedback...\n\n"
 if [ "$#" -gt 1 ]; then
   shift 1
 fi
 
-# printf "\$1=%s \$2=%s  \$3=%s  \$4=%s \n\n" "$1" "$2" "$3" "$4"
+printf "\$1=%s \$2=%s  \$3=%s  \$4=%s \n\n" "$1" "$2" "$3" "$4"
 
 # FDBK_INPUTS="$2 $3 $4"
 # FDBK_INPUTS=("$@")
@@ -35,7 +35,7 @@ fi
 # echo "${FDBK_STAR_INPUTS[@]}"
 # echo -n "\$FDBK_INPUTS="
 # echo "$FDBK_INPUTS"
-set_ergo_feedback "$@"
+set_ergo_feedback "${FDBK_INPUTS[@]}"
 # set_ergo_feedback "${FDBK_STAR_INPUTS[@]}"
 # echo -n "\$@="
 # echo "$@"
@@ -63,5 +63,4 @@ mapfile -t ERGO < <(get_ergo)
 create_notification ${ERGO[@]}
 
 
-printf "\t %s \n" "${ERGO[*]}" >> "$HOME"/phast.err
-echo "phast.sh - done " >> "$HOME"/phast.err
+echo "phast.sh - done " >>"$HOME"/phast.err
