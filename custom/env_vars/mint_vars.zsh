@@ -28,3 +28,6 @@ export USR_SHARE='/usr/share'
 export HOME_CINNAMON_DIR="$HOME/Cinnamon"
 # nvidia-settings config files
 export NVB_FILES="$HOME_CINNAMON_DIR/nvidia-settings"
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
