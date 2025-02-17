@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/env zsh
 
 # Customizations to .zshrc file
 # If you come from bash you might have to change your $PATH.
@@ -17,7 +17,10 @@ source "$ZSH_CUSTOM"/funs/*
 
 # platform-specific
 # adds things like aliases and paths specific to the platform
-if [[ ${OS} =~ "[lL]inux" ]]; then
+if [[ ${OS} =~ "WSL" ]]; then
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zshrc"
+
+elif [[ ${OS} =~ "[lL]inux" ]]; then
   source "$OS_SPECIFIC_CONFIG_DIR/ubu.zshrc"
 
 else
