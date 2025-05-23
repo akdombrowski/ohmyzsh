@@ -79,7 +79,7 @@ alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 
 
 # alias python3='python3.13'
-alias python="$(which python3) "
+alias python="$(which python3)"
 
 alias funs="echo 'renameFilesReplaceDir() \n\
 rnd() \n\
