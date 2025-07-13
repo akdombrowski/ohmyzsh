@@ -100,3 +100,7 @@ COMPLETION_WAITING_DOTS="true"
 # plugins=(git)
 # plugins=(docker common-aliases command-not-found colored-man-pages)
 plugins=(common-aliases command-not-found colored-man-pages)
+
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/workspace"
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
