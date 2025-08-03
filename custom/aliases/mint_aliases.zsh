@@ -9,9 +9,9 @@ alias setDefFileMgr="echo $(xdg-mime default org.kde.dolphin.desktop inode/direc
 
 alias subl="/opt/sublime_text/sublime_text --launch-or-new-window "
 # sublime_text [arguments] -               Edit stdin
-alias sublStdIn="/opt/sublime_text/sublime_text -n - "
+alias sublStdIn="/opt/sublime_text/sublime_text --launch-or-new-window - "
 # sublime_text [arguments] - >out          Edit stdin and write the edit to stdout
-alias sublStdIn2Out="/opt/sublime_text/sublime_text -n - >out "
+alias sublInNOut="/opt/sublime_text/sublime_text --launch-or-new-window - >out "
 
 alias inputDevicesList="xinput --list --short"
 alias ergo="xinput --list-props \"ERGO M575 Mouse\""

@@ -8,6 +8,11 @@ exec 2>>"$HOME"/phast.err
 . "${ZSH_CUSTOM:-/home/akdombrowski/.oh-my-zsh/custom}/funs/mouseSpeed.sh"
 # . "$ZSH_CUSTOM/funs/mouseSpeed.sh"
 
+NAME="$(get_first_ergo_name)"
+printf "name: %s \n" "$NAME"
+printf "args: %s \n" "$@"
+
+
 # printf "\nCURRENT ergo speed: %s \n" "$(get_ergo_speed)"
 
 # printf "\$1 = %s\n" "$1"
@@ -15,7 +20,7 @@ exec 2>>"$HOME"/phast.err
 # printf "\nsetting accel speed...\n\n"
 
 # printf "\$1=%s \$2=%s  \$3=%s  \$4=%s \n\n" "$1" "$2" "$3" "$4"
-set_ergo_mouse_speed "$@"
+set_ergo_mouse_speed -n "$NAME" "$@"
 
 # printf "\ndone\n\nsetting feedback...\n\n"
 if [ "$#" -gt 1 ]; then
@@ -35,7 +40,7 @@ fi
 # echo "${FDBK_STAR_INPUTS[@]}"
 # echo -n "\$FDBK_INPUTS="
 # echo "$FDBK_INPUTS"
-set_ergo_feedback "$@"
+set_ergo_feedback -n "$NAME" "$@"
 # set_ergo_feedback "${FDBK_STAR_INPUTS[@]}"
 # echo -n "\$@="
 # echo "$@"

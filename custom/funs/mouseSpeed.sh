@@ -8,6 +8,20 @@
 # "$0": location of fn call
 # "$1": first arg given
 #
+# if [ -n "$VARIABLE_NAME" ]; then
+#   printf "VARIABLE_NAME is not empty"
+# fi
+# if [ -z ${var+x} ]; then
+#   echo "var is unset";
+# else
+#   echo "var is set to '$var'";
+# fi
+# where ${var+x} is a parameter expansion which evaluates to nothing if var is unset, and substitutes the string x otherwise.
+#
+# ====MMMMMMMMAAAAAAAYYYYYYYBBBBBBBBEEEEEEE====
+# if [ -z "${VARIABLE_NAME}" ]; then
+#   printf "VARIABLE_NAME is not set"
+# ==============================================
 
 # from xset man page
 #  By default the pointer (the on-screen  representation  of  the
@@ -37,9 +51,64 @@
 #  Server  1.7,  these  are  available as input device properties
 #  (see xinput).
 
+list_devices() {
+  xinput list
+}
+
+list_device_names() {
+  xinput list --name-only
+}
+
+get_num_ergos() {
+  NUM_ERGO_DEVICES="$(list_device_names | grep -ic ergo)"
+  # echo "NUM_ERGO_DEVICES $NUM_ERGO_DEVICES"
+  echo "$NUM_ERGO_DEVICES"
+
+}
+
+get_first_ergo_name() {
+  MOUSE_NAME="$(list_device_names | grep -i -m 1 ergo)"
+  # echo "\$MOUSE_NAME"
+  echo "$MOUSE_NAME"
+}
+
+get_ergo_name() {
+  MOUSE_NAME="$(list_device_names | grep -i ergo)"
+  # echo "\$MOUSE_NAME"
+  echo "$MOUSE_NAME"
+}
+
 get_ergo_speed() {
   # echo "$(xinput list-props 'ERGO M575 Mouse' | grep -ioP '(?<=Accel Speed \(\d\d\d\)\:\s).?\d+.?\d*')"
-  xinput list-props 'ERGO M575 Mouse' | grep -ioP '(?<=Accel Speed \(\d\d\d\)\:\s).?\d+.?\d*'
+  local MOUSE_NAME
+  MOUSE_NAME="$(get_first_ergo_name)"
+
+  local RESULT
+  local PROPS
+  # PROPS="$(xinput list-props 'ERGO M575 Mouse' 2>&/tmp/error)"
+  PROPS="$(xinput list-props $MOUSE_NAME 2>&/tmp/error)"
+
+  local ERROR
+  ERROR=$(</tmp/error)
+  if [ -n "${ERROR}" ]; then
+    printf "ERROR: $1 \n" "$ERROR"
+  fi
+
+  if [ -z "${PROPS}" ]; then
+    if [ "$(get_num_ergos)" -gt 1 ]; then
+      echo "couldn't find $MOUSE_NAME but there's another 'ergo'... trying that device name"
+      echo "..."
+      echo "not yet implemented"
+    else
+      echo "couldn't find $MOUSE_NAME"
+    fi
+  else
+    printf "PROPS:\n $1 \n" "$PROPS"
+    local ACCEL
+    ACCEL="$(grep -ioP '(?<=Accel Speed \(\d\d\d\)\:\s).?\d+.?\d*' $PROPS)"
+    echo "ACCEL"
+    echo "$ACCEL"
+  fi
 }
 
 get_ergo_feedbacks() {
@@ -152,14 +221,23 @@ set_ergo_feedback() {
   printf "\tmouseSpeed.sh--set_ergo_feedback: starting\n" >>"$HOME"/phast.err
   exec 2>>"$HOME"/phast.err
 
+  local MOUSE_NAME
+  local DEFAULT_NAME
+  DEFAULT_NAME="ERGO M575 Mouse"
+
   local accel
   local denom
   local threshold
+
   # $opt will hold the current option
-  while getopts h opt; do
+  while getopts n:h opt; do
     # loop continues till options finished
     # see which pattern $opt matches...
     case $opt in
+    n)
+      # set mouse device name
+      MOUSE_NAME="${OPTARG:-${DEFAULT_NAME}}"
+      ;;
     h)
       # printf "dry run only...\n\n"
       printf "set_ergo_feedback [threshold acceleration denominator] \n"
@@ -213,7 +291,7 @@ set_ergo_feedback() {
   # arguments are: <threshold> <num> <denom>
   # default is 2 1 4
   # xinput set-ptr-feedback "ERGO M575 Mouse" 0 3 1
-  xinput set-ptr-feedback "ERGO M575 Mouse" "$threshold" "$accel" "$denom"
+  xinput set-ptr-feedback "$MOUSE_NAME" "$threshold" "$accel" "$denom"
   # printf "updated feedback: \n%s" "$(xinput get-feedbacks 'ERGO M575 Mouse')"
 
   printf "\tmouseSpeed.sh--set_ergo_feedback: done\n" >>"$HOME"/phast.err
@@ -223,6 +301,11 @@ set_ergo_feedback() {
 set_ergo_mouse_speed() {
   printf "\tmouseSpeed.sh--set_ergo_mouse_speed: starting\n" >>"$HOME"/phast.err
   exec 2>>"$HOME"/phast.err
+
+  local MOUSE_NAME
+  local DEFAULT_NAME
+  MOUSE_NAME="ERGO M575 Mouse"
+  DEFAULT_NAME="ERGO M575 Mouse"
 
   local opt
   local DEFAULT_SPEED
@@ -241,11 +324,19 @@ set_ergo_mouse_speed() {
     printf "\tmouseSpeed.sh: no args given, so using mouse speed default: %s \n" "$DEFAULT_SPEED" >>"$HOME"/phast.err
   fi
 
+  printf "opts: \n %s \n" "$(getops)"
+
   # $opt will hold the current option
-  while getopts s:fidh opt; do
+  while getopts ns:fidh opt; do
     # loop continues till options finished
     # see which pattern $opt matches...
     case $opt in
+    n)
+      printf "setting mouse name to %s \n" "$OPTARG"
+      # set mouse device name
+      MOUSE_NAME="${OPTARG:-${DEFAULT_NAME}}"
+      printf "setting mouse name to %s \n" "$MOUSE_NAME"
+      ;;
     s)
       # set mouse speed to specified value\
       SPEED="${OPTARG:-${DEFAULT_SPEED}}"
@@ -310,16 +401,16 @@ set_ergo_mouse_speed() {
   # libinput Accel Custom Scroll Points (358):	<no items>
   # libinput Accel Custom Scroll Step (359):	0.000000
 
-  local MOUSE_NAME
+  # local MOUSE_NAME
   # the name is different when connected via proprietary usb device
   #  'Logitech ERGO M575'
   # with bluetooth,it's:
   # "ERGO M575 Mouse"
   # MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575')"
-  MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575 mouse')"
-  MOUSE_NAME_NUM_RESULTS="$(xinput list --name-only | grep -ic 'ergo m575')"
+  # MOUSE_NAME="$(xinput list --name-only | grep -i 'ergo m575 mouse')"
+  MOUSE_NAME_NUM_RESULTS="$(xinput list --name-only | grep -ic $MOUSE_NAME)"
 
-  # echo "\$MOUSE_NAME_NUM_RESULTS = $MOUSE_NAME_NUM_RESULTS"
+  echo "\$MOUSE_NAME_NUM_RESULTS = $MOUSE_NAME_NUM_RESULTS"
 
   #  this is if using the broader search term
   # if [ "$MOUSE_NAME_NUM_RESULTS" -gt 1 ]; then
