@@ -26,6 +26,7 @@ alias magickStream="stream"
 # alias ink="~/inkscape/squashfs-root/AppRun"
 # alias inkview="ink inkview"
 
+alias nrd="npm run dev"
 alias yarndk='yarn dlx @yarnpkg/sdks vscode'
 alias yarnOn="corepack enable && yarn set version stable --only-if-needed"
 alias ncu="yarn dlx npm-check-updates"
