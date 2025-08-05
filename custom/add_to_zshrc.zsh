@@ -3,7 +3,7 @@
 # Customizations to .zshrc file
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin${PATH:+":$PATH"}
-export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_CUSTOM/funs:$ZSH_CUSTOM/scripts"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_CUSTOM/scripts"
 
 # load environment variables
 source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
@@ -11,7 +11,10 @@ source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
 # shared config
 source "$ALIASES_DIR"/common_aliases.zsh
 
-
+# Source all .zsh files in $ZSH_FUNS
+for f in "$ZSH_FUNS"/*.zsh; do
+  [ -e "$f" ] && . "$f"
+done
 
 # platform-specific
 # adds things like aliases and paths specific to the platform

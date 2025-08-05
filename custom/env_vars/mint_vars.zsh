@@ -27,7 +27,9 @@ export USR_SHARE='/usr/share'
 # location of backup and test config-related stuff for linux mint
 export HOME_CINNAMON_DIR="$HOME/Cinnamon"
 # nvidia-settings config files
-export NVB_FILES="$HOME_CINNAMON_DIR/nvidia-settings"
+export NVB_SETTINGS="$HOME_CINNAMON_DIR/nvidia-settings"
 
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export LOGS_DIR="$HOME/logs"

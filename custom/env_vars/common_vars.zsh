@@ -15,4 +15,7 @@ export ALIASES_DIR="$ZSH/custom/aliases"
 export OS_SPECIFIC_CONFIG_DIR="$ZSH/custom/os-specific-config"
 export ENV_VARS_DIR="$ZSH/custom/env_vars"
 
-export ZSH_CUSTOM
+export ZSH_FUNS="$ZSH/custom/funs"
+export ZSH_SCRIPTS="$ZSH/custom/scripts"
+
+# export ZSH_CUSTOM
