@@ -29,8 +29,8 @@ alias magickStream="stream"
 alias nrd="npm run dev"
 alias yarndk='yarn dlx @yarnpkg/sdks vscode'
 alias yarnOn="corepack enable && yarn set version stable --only-if-needed"
-alias ncu="yarn dlx npm-check-updates"
-alias npx_ncu="npx npm-check-updates"
+alias ncuu="npx npm-check-updates -u"
+alias ncu="npx npm-check-updates"
 
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 

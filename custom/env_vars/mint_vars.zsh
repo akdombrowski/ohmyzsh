@@ -33,3 +33,5 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export LOGS_DIR="$HOME/logs"
+
+export XDG_DATA_HOME="$XDG_DATA_HOME:~/.var/app"
