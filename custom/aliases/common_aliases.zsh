@@ -31,6 +31,7 @@ alias yarndk='yarn dlx @yarnpkg/sdks vscode'
 alias yarnOn="corepack enable && yarn set version stable --only-if-needed"
 alias ncuu="npx npm-check-updates -u"
 alias ncu="npx npm-check-updates"
+alias pn="pnpm"
 
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
 
@@ -77,7 +78,6 @@ alias copyToClip="echo \"renamed to 'clip'\" | clip"
 alias fromClip="xclip -o -selection clipboard && echo "
 
 alias aptUpgrade='sudo apt update && sudo apt upgrade -y && sudo apt update'
-
 
 # alias python3='python3.13'
 alias python="$(which python3)"
