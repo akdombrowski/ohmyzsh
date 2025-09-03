@@ -2,7 +2,7 @@
 
 alias os="echo $(uname -sro)"
 
-alias whichAlias="echo macos_aliases"
+alias whichAlias="echo $MACOS_ALIASES"
 
 alias eless='ls -A -sS -p -h -gG --color'
 alias ls='ls --color -hA -p'

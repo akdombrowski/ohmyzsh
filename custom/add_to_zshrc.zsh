@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/usr/bin/env bash
 
 # Customizations to .zshrc file
 # If you come from bash you might have to change your $PATH.
@@ -19,16 +19,16 @@ done
 # platform-specific
 # adds things like aliases and paths specific to the platform
 if [[ ${OS} =~ "WSL" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zshrc"
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
 
 elif [[ ${OS} =~ "[lL]inux" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/ubu.zshrc"
+  source "$OS_SPECIFIC_CONFIG_DIR/ubu.zsh"
   # all functions
   source "$ZSH_CUSTOM"/funs/*
 elif [[ ${OS} =~ "[dD]arwin" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/macos.zshrc"
+  source "$OS_SPECIFIC_CONFIG_DIR/macos.zsh"
 else
-  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zshrc"
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
 fi
 
 # Set name of the theme to load --- if set to "random", it will

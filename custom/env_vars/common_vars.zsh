@@ -19,3 +19,7 @@ export ZSH_FUNS="$ZSH/custom/funs"
 export ZSH_SCRIPTS="$ZSH/custom/scripts"
 
 # export ZSH_CUSTOM
+
+export WSL_ALIASES="wsl_aliases"
+export WIN_ALIASES="win_aliases"
+export MACOS_ALIASES="macos_aliases"
