@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # if can't read the big comments, turn off 'wrap' feature
 

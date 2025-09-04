@@ -1,10 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # Aliases
-source "$ALIASEZ/macos_aliases.zsh"
+source "$ALIASEZ/mint_aliases.zsh"
 
 # Environment Variables
-source "$ENV_VARS_DIR/macos_vars.zsh"
+source "$ENV_VARS_DIR/mint_vars.zsh"
 
 # anaconda
 # # >>> conda initialize >>>
@@ -22,25 +22,25 @@ source "$ENV_VARS_DIR/macos_vars.zsh"
 # unset __conda_setup
 # # <<< conda initialize <<<
 
-# # mini-forge
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/akdombrowski/workspace/miniforge3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
-# if [ $? -eq 0 ]; then
-#   eval "$__conda_setup"
-# else
-#   if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh" ]; then
-#     . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh"
-#   else
-#     export PATH="$PATH:/home/akdombrowski/workspace/miniforge3/bin"
-#   fi
-# fi
-# unset __conda_setup
+# mini-forge
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/akdombrowski/workspace/miniforge3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+else
+  if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh" ]; then
+    . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh"
+  else
+    export PATH="$PATH:/home/akdombrowski/workspace/miniforge3/bin"
+  fi
+fi
+unset __conda_setup
 
-# if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh" ]; then
-#   . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh"
-# fi
-# # <<< conda initialize <<<
+if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh" ]; then
+  . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

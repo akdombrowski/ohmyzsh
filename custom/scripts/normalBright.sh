@@ -1,6 +1,6 @@
-#!/usr/bin/zsh
+#!/usr/bin/env bash
 
-local ERRORS_PATH="${HOME}/logs/maxBright_error.log"
+local ERRORS_PATH="${HOME}/logs/normalBright_error.log"
 touch "$ERRORS_PATH"
 echo "maxBright.sh--$(date +%m/%d/%y_%H:%M:%S) - starting" >>"$ERRORS_PATH"
 exec 2>>"$ERRORS_PATH"
@@ -14,9 +14,9 @@ exec 2>>"$ERRORS_PATH"
 # - nvbs
 # - ls $NVB_SETTINGS
 
-# uses settings file $NVB_SETTINGS/.nvidia-settings-rc_{name}
+# uses settings file $NVB_SETTINGS/.nvidia-settings-rc_normal
+# nvbl normal
 nvbl super-bright
-
 # 
 # 
 # 

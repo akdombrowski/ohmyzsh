@@ -31,6 +31,8 @@ else
   source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
 fi
 
+# autostart ssh
+source "$SCRIPTZ/init-ssh.sh"
 
 
 # Set name of the theme to load --- if set to "random", it will
