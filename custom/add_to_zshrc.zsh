@@ -9,7 +9,7 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_
 source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
 
 # shared config
-source "$ALIASES_DIR"/common_aliases.zsh
+source "$ALIASEZ"/common_aliases.zsh
 
 # Source all .zsh files in $ZSH_FUNS
 for f in "$ZSH_FUNS"/*.zsh; do
@@ -30,6 +30,8 @@ elif [[ ${OS} =~ "[dD]arwin" ]]; then
 else
   source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
 fi
+
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,

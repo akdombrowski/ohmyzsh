@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Aliases
-source "$ALIASES_DIR/mint_aliases.zsh"
+source "$ALIASEZ/mint_aliases.zsh"
 
 # Environment Variables
 source "$ENV_VARS_DIR/mint_vars.zsh"

@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Aliases
-source "$ALIASES_DIR/macos_aliases.zsh"
+source "$ALIASEZ/macos_aliases.zsh"
 
 # Environment Variables
 source "$ENV_VARS_DIR/macos_vars.zsh"

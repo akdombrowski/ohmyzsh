@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-# PATH env var
 export PATH="$PATH:$HOME/.local"
 # export PATH="$PATH:bin"
 
@@ -11,12 +10,15 @@ export DEFAULT_USER="akdombrowski"
 export TABSIZE=0
 
 export OS="$(uname -sro)"
-export ALIASES_DIR="$ZSH/custom/aliases"
-export OS_SPECIFIC_CONFIG_DIR="$ZSH/custom/os-specific-config"
-export ENV_VARS_DIR="$ZSH/custom/env_vars"
+export OS_SPECIFIC_CONFIG_DIR="$ZSH_CUSTOM/os-specific-config"
+export ENV_VARS_DIR="$ZSH_CUSTOM/env_vars"
 
-export ZSH_FUNS="$ZSH/custom/funs"
-export ZSH_SCRIPTS="$ZSH/custom/scripts"
+export ZSH_ALIASES="$ZSH_CUSTOM/aliases"
+export ZSH_FUNS="$ZSH_CUSTOM/funs"
+export ZSH_SCRIPTS="$ZSH_CUSTOM/scripts"
+export FUNZ="$ZSH_CUSTOM/funs"
+export SCRIPTZ="$ZSH_CUSTOM/scripts"
+export ALIASEZ="$ZSH_CUSTOM/aliases"
 
 # export ZSH_CUSTOM
 

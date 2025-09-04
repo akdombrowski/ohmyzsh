@@ -2,7 +2,7 @@
 
 mouse_fast() {
   # shellcheck source=../funs/mouseSpeed.sh
-  . "$ZSH_CUSTOM/funs/mouseSpeed.sh"
+  . "$FUNZ/mouseSpeed.sh"
 
   # printf "\nCURRENT ergo speed: %s \n" "$(get_ergo_speed)"
 

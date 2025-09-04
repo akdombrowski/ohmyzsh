@@ -6,7 +6,7 @@ exec 2>>"$HOME"/phast.err
 
 # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
 . "${ZSH_CUSTOM:-/home/akdombrowski/.oh-my-zsh/custom}/funs/mouseSpeed.sh"
-# . "$ZSH_CUSTOM/funs/mouseSpeed.sh"
+# . "$FUNZ/mouseSpeed.sh"
 
 NAME="$(get_first_ergo_name)"
 printf "name: %s \n" "$NAME"
