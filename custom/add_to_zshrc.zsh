@@ -19,20 +19,20 @@ done
 # platform-specific
 # adds things like aliases and paths specific to the platform
 if [[ ${OS} =~ "WSL" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.sh"
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
 
 elif [[ ${OS} =~ "[lL]inux" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/ubu.sh"
+  source "$OS_SPECIFIC_CONFIG_DIR/ubu.zsh"
   # all functions
   source "$ZSH_CUSTOM"/funs/*
 elif [[ ${OS} =~ "[dD]arwin" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/macos.sh"
+  source "$OS_SPECIFIC_CONFIG_DIR/macos.zsh"
 else
-  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.sh"
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
 fi
 
 # autostart ssh
-source "$SCRIPTZ/init-ssh.sh"
+source "$SCRIPTZ/init-ssh.zsh"
 
 echo "started ssh"
 

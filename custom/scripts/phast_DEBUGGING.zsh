@@ -5,8 +5,8 @@ echo "phast.sh--$(date +%m/%d/%y_%H:%M:%S) - starting" >>"$HOME"/phast.err
 exec 2>>"$HOME"/phast.err
 
 # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
-. "$FUNZ/mouseSpeed.sh"
-# . "$FUNZ/mouseSpeed.sh"
+. "$FUNZ/mouseSpeed.zsh"
+# . "$FUNZ/mouseSpeed.zsh"
 
 # printf "\nCURRENT ergo speed: %s \n" "$(get_ergo_speed)"
 

@@ -5,8 +5,8 @@ echo "phast.sh--$(date +%m/%d/%y_%H:%M:%S) - starting" >>"$HOME"/phast.err
 exec 2>>"$HOME"/phast.err
 
 # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
-. "${ZSH_CUSTOM:-/home/akdombrowski/.oh-my-zsh/custom}/funs/mouseSpeed.sh"
-# . "$FUNZ/mouseSpeed.sh"
+. "${ZSH_CUSTOM:-/home/akdombrowski/.oh-my-zsh/custom}/funs/mouseSpeed.zsh"
+# . "$FUNZ/mouseSpeed.zsh"
 
 NAME="$(get_first_ergo_name)"
 printf "name: %s \n" "$NAME"

@@ -33,4 +33,4 @@ alias brights='ls "$NVB_SETTINGS"/.nvidia-settings-rc_*'
 alias nv_bright="echo 'renamed alias to \"nvb\"'"
 alias nv_bright_configs="echo 'renamed alias to \"nvbs\"'"
 
-alias phast="phast.sh"
+alias phast="phast.zsh"

@@ -27,8 +27,8 @@ nvbl super-bright
 # exec 2>>"$HOME"/phast.err
 
 # # shellcheck source=/home/akdombrowski/.oh-my-zsh/custom/funs/mouseSpeed.sh
-# . "$FUNZ/mouseSpeed.sh"
-# # . "$FUNZ/mouseSpeed.sh"
+# . "$FUNZ/mouseSpeed.zsh"
+# # . "$FUNZ/mouseSpeed.zsh"
 
 # # printf "\nCURRENT ergo speed: %s \n" "$(get_ergo_speed)"
 

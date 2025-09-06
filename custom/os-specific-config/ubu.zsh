@@ -13,8 +13,8 @@ source "$ENV_VARS_DIR/mint_vars.zsh"
 # if [ $? -eq 0 ]; then
 #   eval "$__conda_setup"
 # else
-#   if [ -f "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.sh" ]; then
-#     . "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.sh"
+#   if [ -f "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.zsh" ]; then
+#     . "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.zsh"
 #   else
 #     export PATH="$PATH:/home/akdombrowski/workspace/anaconda3/bin"
 #   fi
@@ -29,22 +29,22 @@ __conda_setup="$('/home/akdombrowski/workspace/miniforge3/bin/conda' 'shell.bash
 if [ $? -eq 0 ]; then
   eval "$__conda_setup"
 else
-  if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh" ]; then
-    . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.sh"
+  if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.zsh" ]; then
+    . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/conda.zsh"
   else
     export PATH="$PATH:/home/akdombrowski/workspace/miniforge3/bin"
   fi
 fi
 unset __conda_setup
 
-if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh" ]; then
-  . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.sh"
+if [ -f "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.zsh" ]; then
+  . "/home/akdombrowski/workspace/miniforge3/etc/profile.d/mamba.zsh"
 fi
 # <<< conda initialize <<<
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.zsh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # perl
