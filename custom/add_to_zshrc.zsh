@@ -3,7 +3,7 @@
 # Customizations to .zshrc file
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin${PATH:+":$PATH"}
-export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$ZSH_CUSTOM/scripts"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$SCRIPTZ${PATH:+":$PATH"}"
 
 # load environment variables
 source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
@@ -19,21 +19,22 @@ done
 # platform-specific
 # adds things like aliases and paths specific to the platform
 if [[ ${OS} =~ "WSL" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.sh"
 
 elif [[ ${OS} =~ "[lL]inux" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/ubu.zsh"
+  source "$OS_SPECIFIC_CONFIG_DIR/ubu.sh"
   # all functions
   source "$ZSH_CUSTOM"/funs/*
 elif [[ ${OS} =~ "[dD]arwin" ]]; then
-  source "$OS_SPECIFIC_CONFIG_DIR/macos.zsh"
+  source "$OS_SPECIFIC_CONFIG_DIR/macos.sh"
 else
-  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.zsh"
+  source "$OS_SPECIFIC_CONFIG_DIR/win_wsl.sh"
 fi
 
 # autostart ssh
 source "$SCRIPTZ/init-ssh.sh"
 
+echo "started ssh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,7 +73,7 @@ zstyle ':omz:update' frequency 1
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -107,4 +108,4 @@ plugins=(common-aliases command-not-found colored-man-pages)
 
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/workspace"
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+# source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
