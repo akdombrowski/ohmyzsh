@@ -107,3 +107,7 @@ plugins=(common-aliases command-not-found colored-man-pages)
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/workspace"
 # source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+# Connect to Shared Folders
+# # Auto-mount LennyDesk share if not already mounted
+source "$SCRIPTZ/smbMounts.zsh"
