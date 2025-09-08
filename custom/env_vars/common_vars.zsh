@@ -25,3 +25,6 @@ export ALIASEZ="$ZSH_CUSTOM/aliases"
 export WSL_ALIASES="wsl_aliases"
 export WIN_ALIASES="win_aliases"
 export MACOS_ALIASES="macos_aliases"
+
+# ip of desktop
+export LENNYDESK='15'
