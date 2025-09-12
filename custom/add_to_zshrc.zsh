@@ -111,3 +111,9 @@ export PROJECT_HOME="$HOME/workspace"
 # Connect to Shared Folders
 # # Auto-mount LennyDesk share if not already mounted
 source "$SCRIPTZ/smbMounts.zsh"
+
+# if the file doesn't exist, create ssh rc file
+# TODO: do I need to source it afterwards?
+if [ ! -f "$HOME/.ssh/rc" ]; then
+	cat "${SCRIPTZ}/init-ssh.zsh" > "$HOME/.ssh/rc"
+fi
