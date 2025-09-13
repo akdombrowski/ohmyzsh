@@ -32,7 +32,7 @@ else
 fi
 
 # autostart ssh
-source "$SCRIPTZ/init-ssh.zsh"
+# source "$SCRIPTZ/init-ssh.zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -108,12 +108,12 @@ export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/workspace"
 # source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
-# Connect to Shared Folders
-# # Auto-mount LennyDesk share if not already mounted
-source "$SCRIPTZ/smbMounts.zsh"
-
 # if the file doesn't exist, create ssh rc file
 # TODO: do I need to source it afterwards?
 if [ ! -f "$HOME/.ssh/rc" ]; then
 	cat "${SCRIPTZ}/init-ssh.zsh" > "$HOME/.ssh/rc"
 fi
+
+# Connect to Shared Folders
+# # Auto-mount LennyDesk share if not already mounted
+# source "$SCRIPTZ/smbMounts.zsh"
