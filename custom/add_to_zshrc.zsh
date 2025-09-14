@@ -5,6 +5,10 @@
 # export PATH=$HOME/bin:/usr/local/bin${PATH:+":$PATH"}
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:$SCRIPTZ${PATH:+":$PATH"}"
 
+# opencode
+export PATH="$PATH:$HOME/.opencode/bin"
+
+
 # load environment variables
 source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
 
