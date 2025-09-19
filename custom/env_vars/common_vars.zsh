@@ -31,32 +31,32 @@ export LENNYDESK='15'
 
 # Ollama
 # Show additional debug information (e.g. OLLAMA_DEBUG=1) 
-export $1OLLAMA_DEBUG=''
+export OLLAMA_DEBUG=1
 # IP Address for the ollama server (default 127.0.0.1:11434) 
-export $1OLLAMA_HOST=''
+export OLLAMA_HOST='127.0.0.1:11434'
 # The duration that models stay loaded in memory (default "5m") 
-export $1OLLAMA_KEEP_ALIVE=''
+export OLLAMA_KEEP_ALIVE='4m'
 # Maximum number of loaded models per GPU 
-export $1OLLAMA_MAX_LOADED_MODELS=''
+# export OLLAMA_MAX_LOADED_MODELS=''
 # Maximum number of queued requests 
-export $1OLLAMA_MAX_QUEUE=''
+export OLLAMA_MAX_QUEUE='5'
 # The path to the models directory 
-export $1OLLAMA_MODELS=''
+# export OLLAMA_MODELS=''
 # Maximum number of parallel requests 
-export $1OLLAMA_NUM_PARALLEL=''
+# export OLLAMA_NUM_PARALLEL=''
 # Do not prune model blobs on startup 
-export $1OLLAMA_NOPRUNE=''
+# export OLLAMA_NOPRUNE=''
 # A comma separated list of allowed origins 
-export $1OLLAMA_ORIGINS='localhost,127.0.0.1'
+export OLLAMA_ORIGINS='localhost,127.0.0.1'
 # Always schedule model across all GPUs 
-export $1OLLAMA_SCHED_SPREAD='true'
+export OLLAMA_SCHED_SPREAD='true'
 # Enabled flash attention 
-export $1OLLAMA_FLASH_ATTENTION=''
+# export OLLAMA_FLASH_ATTENTION=''
 # Quantization type for the K/V cache (default: f16) 
-export $1OLLAMA_KV_CACHE_TYPE='f32'
+export OLLAMA_KV_CACHE_TYPE='f32'
 # Set LLM library to bypass autodetection 
-export $1OLLAMA_LLM_LIBRARY=''
+# export OLLAMA_LLM_LIBRARY=''
 # Reserve a portion of VRAM per GPU (bytes) 
-export $1OLLAMA_GPU_OVERHEAD='1024'
+export OLLAMA_GPU_OVERHEAD='1024'
 # How long to allow model loads to stall before giving up (default "5m") 
-export $1OLLAMA_LOAD_TIMEOUT='1m'
+export OLLAMA_LOAD_TIMEOUT='1m'
