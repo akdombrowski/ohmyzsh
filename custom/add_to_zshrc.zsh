@@ -120,7 +120,7 @@ fi
 
 # Connect to Shared Folders
 # # Auto-mount LennyDesk share if not already mounted
-# source "$SCRIPTZ/smbMounts.zsh"
+source "$SCRIPTZ/smbMounts.zsh"
 
 
 # anaconda

@@ -9,6 +9,12 @@ export F="ahhemf"
 # get count of mp4's in folder given by argument "$1"
 # echo "# get count of mp4's in folder given by argument \"$1\""
 # echo "ls -R \"$1\" | sort -g | uniq | grep -Pe \".*\.mp4\" | wc -l"
+# numberOfMp4s=$(ls -R . | sort -g | uniq | grep -P "\.mp4" | wc -l)
+count() {
+  numberOfMp4s=$(ls -R . | sort -g | uniq | grep -P "\.mp4" | wc -l)
+  echo $numberOfMp4s
+}
+
 
 # list all available smb shares from host
 # echo "# list all available smb shares from host"
