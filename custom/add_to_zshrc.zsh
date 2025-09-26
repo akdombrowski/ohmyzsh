@@ -119,8 +119,8 @@ if [ ! -f "$HOME/.ssh/rc" ]; then
 fi
 
 # Connect to Shared Folders
-# # Auto-mount LennyDesk share if not already mounted
-source "$SCRIPTZ/smbMounts.zsh"
+# Create mounts for LennyDesk if not already mounted
+# source "$SCRIPTZ/smbMounts.zsh"
 
 
 # anaconda
