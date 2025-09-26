@@ -10,6 +10,6 @@ deflickMP4() {
   for f in *.mp4; do
     NAME="${f::-4}--deflicked.mp4"
     echo "$f -> $OUTPUT_DIR/$NAME"
-    ffmpeg -i "$f" -vf "tmix=frames=4:weights=1 2 3 4" -c:a copy "$OUTPUT_DIR/$NAME.mp4"
+    ffmpeg -i "$f" -vf "tmix=frames=4:weights=1 1 50 50" -c:a copy "$OUTPUT_DIR/$NAME"
   done
 }
