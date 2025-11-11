@@ -24,6 +24,10 @@ function start_agent {
 }
 
 # Source SSH settings, if applicable
+CURR_SSH_AGENT_ENV=$(cat "$HOME/.ssh/agent-env" 2>/dev/null)
+export CURR_SSH_AGENT_ENV
+
+# Source SSH settings, if applicable
 if [ -f "$SSH_AGENT_ENV" ]; then
     . "$SSH_AGENT_ENV" >/dev/null
     # echo "ps -ef | grep \"$SSH_AGENT_PID\" | grep ssh-agent$"

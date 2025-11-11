@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export PATH="$PATH:$HOME/.local"
+# export PATH="$PATH:$HOME/.local"
 # export PATH="$PATH:bin"
 
 export DEFAULT_USERNAME="akdombrowski"
