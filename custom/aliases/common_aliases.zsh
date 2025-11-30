@@ -85,7 +85,7 @@ alias python="$(which python3)"
 
 # Connect to Shared Folders
 # # Auto-mount LennyDesk share if not already mounted
-alias mysmb="source \"$SCRIPTZ/smbMounts.zsh\""
+alias mysmb="sh -c \"$SCRIPTZ/smbMounts.zsh\""
 
 alias funs="echo 'renameFilesReplaceDir() \n\
 rnd() \n\
