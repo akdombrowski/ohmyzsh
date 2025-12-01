@@ -50,8 +50,12 @@ auto_mnt() {
   smb_path="$2"
   if ! mountpoint -q "${arg1}"; then
     sudo mount --onlyonce -m -t cifs "$smb_path" "$mnt_path" \
-      -o $(cat "$HOME_LENNYDESK")
+      -o "$(cat $HOME_LENNYDESK),uid=$(id -u),gid=$(id -g),file_mode=0664,dir_mode=0775"
   fi
+}
+
+unmount() {
+  sudo umount "$1"
 }
 
 # # Auto-mount LennyDesk share if not already mounted

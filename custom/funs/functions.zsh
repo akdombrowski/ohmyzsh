@@ -10,6 +10,49 @@
 #
 #
 #
+replaceSpaces() {
+  # $opt will hold the current option
+  local opt
+  # removed the ":" so that the value following the "-c" flag wouldn't be read
+  # with that flag
+  while getopts tx: opt; do
+    # loop continues till options finished
+    # see which pattern $opt matches...
+    case $opt in
+    t)
+      local test=1
+      ;;
+    x)
+      local extension=".$OPTARG"
+      ;;
+    \?)
+      # matches a question mark
+      # (and nothing else, see text)
+      print Bad option, aborting.
+      return 1
+      ;;
+    esac
+  done
+  ((OPTIND > 1)) && shift "$((OPTIND - 1))"
+  # print "Remaining arguments are: $*"
+
+  for f in *\ *; do
+    # check if file exists?
+    [ -f "$f" ]
+
+    # print filename changes
+    echo "$f -> ${f// /_}"
+    
+    # if dry run flag was NOT given, make changes
+    if [[ -z "$test" ]]; then
+      sudo mv "$f" "${f// /_}"
+    fi
+  done
+}
+
+pngToJPG() {
+  for f in *.png; do magick $f "${f::-3}jpg"; done
+}
 
 renameFilesReplaceDir() {
   local searchTerm="$1"
@@ -123,7 +166,7 @@ rndSuffix() {
   if [[ -n "$wantsCopyToClipboard" ]]; then
     echo -n "$rnd" | xclip -selection clipboard
   fi
-    echo "$rnd"
+  echo "$rnd"
 }
 
 rndPrefix() {
