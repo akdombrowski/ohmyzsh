@@ -131,17 +131,17 @@ fi
 # anaconda
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/akdombrowski/workspace/anaconda3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
-# if [ $? -eq 0 ]; then
-#   eval "$__conda_setup"
-# else
-#   if [ -f "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.zsh" ]; then
-#     . "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.zsh"
-#   else
-#     export PATH="$PATH:/home/akdombrowski/workspace/anaconda3/bin"
-#   fi
-# fi
-# unset __conda_setup
+__conda_setup="$('/home/akdombrowski/workspace/anaconda3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+else
+  if [ -f "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.zsh" ]; then
+    . "/home/akdombrowski/workspace/anaconda3/etc/profile.d/conda.zsh"
+  else
+    export PATH="$PATH:/home/akdombrowski/workspace/anaconda3/bin"
+  fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
 # mini-forge
