@@ -165,3 +165,7 @@ unset __conda_setup
 # # <<< conda initialize <<<
 
 # zprof
+
+
+export APIFY_CLI_INSTALL="/home/akdombrowski/.apify"
+export PATH="$PATH:$APIFY_CLI_INSTALL/bin"
