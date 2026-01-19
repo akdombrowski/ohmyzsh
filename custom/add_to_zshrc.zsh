@@ -124,6 +124,8 @@ if [ ! -f "$HOME/.ssh/rc" ]; then
   cat "${SCRIPTZ}/init-ssh.zsh" >"$HOME/.ssh/rc"
 fi
 
+export PATH="$PATH:/usr/bin:/bin"
+
 # Connect to Shared Folders
 # Create mounts for LennyDesk if not already mounted
 # source "$SCRIPTZ/smbMounts.zsh"
@@ -166,6 +168,14 @@ unset __conda_setup
 
 # zprof
 
+
+# pnpm
+export PNPM_HOME="/home/adombrowski/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PATH:$PNPM_HOME" ;;
+esac
+# pnpm end
 
 export APIFY_CLI_INSTALL="/home/akdombrowski/.apify"
 export PATH="$PATH:$APIFY_CLI_INSTALL/bin"
