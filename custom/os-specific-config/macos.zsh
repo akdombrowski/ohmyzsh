@@ -5,6 +5,7 @@ source "$ALIASEZ/macos_aliases.zsh"
 
 # Environment Variables
 source "$ENV_VARS_DIR/macos_vars.zsh"
+source "$ENV_VARS_DIR/env_local.zsh"
 
 # anaconda
 # # >>> conda initialize >>>
