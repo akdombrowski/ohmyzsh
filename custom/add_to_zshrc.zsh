@@ -17,6 +17,11 @@ export PATH="$PATH:$HOME/.opencode/bin"
 # load environment variables
 source "$ZSH_CUSTOM/env_vars/common_vars.zsh"
 
+# load local environment variables if they exist
+if [[ -f "$ENV_VARS_DIR/env_local.zsh" ]]; then
+  source "$ENV_VARS_DIR/env_local.zsh"
+fi
+
 # shared config
 source "$ALIASEZ"/common_aliases.zsh
 
