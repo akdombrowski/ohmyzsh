@@ -13,3 +13,5 @@ log/
 
 # Snyk Security Extension - AI Rules (auto-generated)
 .github/instructions/snyk_rules.instructions.md
+
+custom/env_vars/env_local.zsh
